@@ -12,6 +12,9 @@
   --gold:#b39155;
   --gold-hover:#96763d;
   --ink:#4a524d;
+  
+  /* Tu imagen configurada como fondo */
+  --bg-image: url('9469116_4152950.jpg'); 
 }
 
 *{box-sizing:border-box}
@@ -43,7 +46,7 @@ body{
   flex-direction:column;
 }
 
-/* PANTALLA DEL SOBRE CON TONO MEDIO */
+/* PANTALLA DEL SOBRE */
 .envelope-screen{
   position:absolute;
   inset:0;
@@ -72,7 +75,6 @@ body{
   cursor:pointer;
 }
 
-/* TONO INTERMEDIO Y SUAVE PARA EL SOBRE */
 .envelope{
   position:absolute;
   inset:0;
@@ -104,7 +106,6 @@ body{
   border-color:transparent #879b91 transparent transparent;
 }
 
-/* SOLAPA SUPERIOR */
 .flap{
   position:absolute;
   top:0;left:0;
@@ -117,7 +118,6 @@ body{
   filter:drop-shadow(0 3px 4px rgba(40,55,48,.12));
 }
 
-/* SELLO CON "A y F" CENTRADO */
 .seal{
   position:absolute;
   z-index:6;
@@ -171,16 +171,37 @@ body{
   padding:0 10px;
 }
 
-/* TARJETA LIMPIA DE LA BODA */
+/* TARJETA INTERNA CON TU IMAGEN DE FONDO */
 .content{
   min-height:100svh;
   padding:65px 30px 45px;
   text-align:center;
   position:relative;
   background:#ffffff;
+  
+  /* Configuración de tu imagen dentro de la tarjeta */
+  background-image: var(--bg-image);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  
   display:flex;
   flex-direction:column;
   justify-content:center;
+}
+
+/* Velo sutil (puedes ajustar el 0.82 si quieres que la imagen se vea más o menos clara) */
+.content::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:rgba(255, 255, 255, 0.82);
+  z-index:1;
+}
+
+.content > *{
+  position:relative;
+  z-index:2;
 }
 
 .kicker{
@@ -266,7 +287,6 @@ body{
 
 .place{grid-column:1/-1}
 
-/* BOTÓN GOOGLE MAPS */
 .btn-maps{
   display:inline-flex;
   align-items:center;
@@ -282,6 +302,7 @@ body{
   letter-spacing:.12em;
   text-transform:uppercase;
   transition:all .25s ease;
+  background: rgba(255,255,255,0.7);
 }
 
 .btn-maps svg{
@@ -300,7 +321,6 @@ body{
   stroke:#ffffff;
 }
 
-/* ADAPTACIÓN MÓVIL */
 @media(max-width:480px){
   .page{padding:0}
   .invitation{border-radius:0;min-height:100svh;box-shadow:none;width:100%}
@@ -330,7 +350,7 @@ body{
       <div class="instruction">TOCA EL SOBRE PARA ABRIRLO</div>
     </div>
 
-    <!-- TARJETA DE LA BODA (LIMPIA) -->
+    <!-- TARJETA CON FONDO DE IMAGEN -->
     <section class="content">
 
       <div class="kicker">NOS CASAMOS</div>
@@ -347,7 +367,6 @@ body{
       <div class="line"></div>
 
       <div class="details">
-        <!-- LLEGADA -->
         <div class="detail">
           <svg class="detail-icon" viewBox="0 0 24 24">
             <circle cx="12" cy="12" r="9" stroke-width="1.3"/>
@@ -357,7 +376,6 @@ body{
           <p>13.00 h</p>
         </div>
 
-        <!-- CEREMONIA -->
         <div class="detail">
           <svg class="detail-icon" viewBox="0 0 24 24">
             <circle cx="9" cy="13" r="5" stroke-width="1.3"/>
@@ -368,7 +386,6 @@ body{
           <p>13.30 h</p>
         </div>
 
-        <!-- LUGAR CON BOTÓN A MAPS -->
         <div class="detail place">
           <svg class="detail-icon" viewBox="0 0 24 24">
             <path d="M12 21s-6-5.3-6-10a6 6 0 1 1 12 0c0 4.7-6 10-6 10z" stroke-width="1.3"/>
