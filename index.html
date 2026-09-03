@@ -66,6 +66,18 @@ body{
   pointer-events:none;
 }
 
+/* TEXTO ENCIMA DEL SOBRE */
+.envelope-title{
+  font-family:"Cormorant Garamond", serif;
+  color:var(--gold);
+  font-size:20px;
+  letter-spacing:.2em;
+  text-transform:uppercase;
+  text-align:center;
+  margin-bottom:35px;
+  font-weight:500;
+}
+
 .envelope-wrap{
   width:min(92%,380px);
   aspect-ratio:1.45;
@@ -318,6 +330,7 @@ body{
   .page{padding:0}
   .invitation{border-radius:0;min-height:100svh;box-shadow:none;width:100%}
   .envelope-screen{min-height:100svh;padding:15px}
+  .envelope-title{font-size:17px;margin-bottom:25px}
   .content{padding:45px 20px}
   .names{font-size:38px}
   .surnames{font-size:16px}
@@ -333,6 +346,9 @@ body{
 
     <!-- SOBRE DE BIENVENIDA -->
     <div class="envelope-screen" id="envelopeScreen">
+      
+      <div class="envelope-title">TE INVITAMOS A NUESTRA BODA</div>
+
       <div class="envelope-wrap" id="envelopeWrap" aria-label="Tocar el sobre para abrir la invitación">
         <div class="envelope">
           <div class="flap"></div>
