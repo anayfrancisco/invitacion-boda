@@ -1,1 +1,390 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ana María & Francisco — 31.10.2026</title>
+<meta name="description" content="Invitación de boda de Ana María y Francisco · 31 de octubre de 2026">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Montserrat:wght@300;400;500&display=swap');
 
+:root{
+  --sage:#a9bdb2;
+  --sage-dark:#66867a;
+  --paper:#faf9f5;
+  --gold:#b39155;
+  --ink:#4d514d;
+}
+
+*{box-sizing:border-box}
+html,body{margin:0;min-height:100%;font-family:Montserrat,sans-serif;color:var(--ink)}
+body{
+  background:
+    radial-gradient(circle at 12% 18%, rgba(190,211,201,.45), transparent 28%),
+    radial-gradient(circle at 88% 80%, rgba(190,211,201,.45), transparent 30%),
+    #d7e2dc;
+  overflow-x:hidden;
+}
+
+.page{
+  min-height:100svh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  padding:28px 14px;
+  position:relative;
+  overflow:hidden;
+}
+
+.botanical{position:absolute;opacity:.72;pointer-events:none}
+.botanical.top{top:-20px;left:-35px;transform:rotate(-8deg)}
+.botanical.bottom{right:-50px;bottom:-35px;transform:rotate(170deg)}
+.leaf{fill:#789b8d}
+
+.invitation{
+  width:min(100%, 520px);
+  min-height:760px;
+  position:relative;
+  border-radius:3px;
+  background:rgba(250,249,245,.96);
+  box-shadow:0 28px 65px rgba(62,78,69,.22);
+  overflow:hidden;
+  display:flex;
+  flex-direction:column;
+}
+
+.envelope-screen{
+  position:absolute;
+  inset:0;
+  z-index:10;
+  background:
+    radial-gradient(circle at 20% 10%, rgba(218,231,224,.75), transparent 30%),
+    radial-gradient(circle at 90% 85%, rgba(211,226,218,.8), transparent 32%),
+    var(--paper);
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  padding:35px;
+  transition:opacity .8s ease, visibility .8s ease;
+}
+
+.envelope-screen.opened{
+  opacity:0;
+  visibility:hidden;
+  pointer-events:none;
+}
+
+.envelope-wrap{
+  width:min(92%,420px);
+  aspect-ratio:1.5;
+  position:relative;
+  perspective:1000px;
+  touch-action:pan-y;
+}
+
+.envelope{
+  position:absolute;
+  inset:0;
+  background:#bdcfc6;
+  border-radius:4px;
+  box-shadow:0 20px 35px rgba(55,72,64,.22);
+  overflow:visible;
+}
+
+.envelope:before,
+.envelope:after{
+  content:"";
+  position:absolute;
+  bottom:0;
+  width:0;height:0;
+  border-style:solid;
+  z-index:3;
+}
+
+.envelope:before{
+  left:0;
+  border-width:0 0 100% 50%;
+  border-color:transparent transparent #aec2b9 transparent;
+}
+
+.envelope:after{
+  right:0;
+  border-width:0 50% 100% 0;
+  border-color:transparent #a5bbb1 transparent transparent;
+}
+
+.flap{
+  position:absolute;
+  top:0;left:0;
+  width:100%;height:64%;
+  background:#c6d5ce;
+  clip-path:polygon(0 0,100% 0,50% 100%);
+  transform-origin:top center;
+  transition:transform 1s cubic-bezier(.2,.75,.2,1);
+  z-index:5;
+  filter:drop-shadow(0 3px 3px rgba(50,70,60,.08));
+}
+
+.seal{
+  position:absolute;
+  z-index:6;
+  left:50%;top:52%;
+  transform:translate(-50%,-50%);
+  width:68px;height:68px;
+  border-radius:50%;
+  background:radial-gradient(circle at 35% 30%, #d2b878, #9f7b3e);
+  box-shadow:0 5px 12px rgba(74,58,31,.25);
+  display:grid;
+  place-items:center;
+  color:white;
+  font-family:"Cormorant Garamond",serif;
+  font-size:22px;
+  transition:transform .6s ease, opacity .35s ease;
+}
+.seal span{border:1px solid rgba(255,255,255,.65);width:48px;height:48px;border-radius:50%;display:grid;place-items:center}
+
+.envelope-screen.opening .flap{transform:rotateX(180deg)}
+.envelope-screen.opening .seal{transform:translate(-50%,-50%) scale(.75);opacity:0}
+.envelope-screen.opening .envelope{animation:lift .9s ease forwards}
+
+@keyframes lift{
+  50%{transform:translateY(-18px) scale(1.015)}
+  100%{transform:translateY(-35px) scale(.97);opacity:0}
+}
+
+.instruction{
+  margin-top:52px;
+  text-align:center;
+  color:var(--gold);
+  letter-spacing:.45em;
+  font-size:12px;
+  font-weight:500;
+}
+.arrow{
+  width:20px;height:20px;
+  border-right:1px solid var(--gold);
+  border-bottom:1px solid var(--gold);
+  transform:rotate(45deg);
+  margin:18px auto 0;
+  animation:bounce 1.5s infinite;
+}
+@keyframes bounce{50%{transform:rotate(45deg) translate(5px,5px)}}
+
+.hint{
+  margin-top:25px;
+  font-size:10px;
+  letter-spacing:.12em;
+  opacity:.6;
+}
+
+.content{
+  min-height:100svh;
+  padding:72px 38px 55px;
+  text-align:center;
+  position:relative;
+  background:
+    linear-gradient(rgba(255,255,255,.62),rgba(255,255,255,.62)),
+    radial-gradient(circle at 10% 30%, rgba(194,218,207,.55), transparent 30%),
+    radial-gradient(circle at 95% 70%, rgba(194,218,207,.55), transparent 30%);
+}
+
+.content:before{
+  content:"";
+  position:absolute;
+  top:-10px;right:-15px;
+  width:190px;height:190px;
+  background:
+    radial-gradient(ellipse at 20% 50%, #8faea1 0 5%, transparent 6%),
+    radial-gradient(ellipse at 35% 35%, #789b8d 0 5%, transparent 6%),
+    radial-gradient(ellipse at 50% 20%, #9ab6aa 0 6%, transparent 7%);
+  opacity:.35;
+  transform:rotate(25deg);
+  filter:blur(.2px);
+}
+
+.kicker{
+  font-size:11px;
+  letter-spacing:.38em;
+  margin-bottom:26px;
+}
+.names{
+  font-family:"Cormorant Garamond",serif;
+  color:var(--gold);
+  font-size:clamp(44px,10vw,66px);
+  line-height:.86;
+  letter-spacing:.08em;
+  font-weight:500;
+}
+.and{
+  font-family:"Cormorant Garamond",serif;
+  font-size:25px;
+  color:var(--gold);
+  margin:18px 0;
+}
+.surnames{
+  font-family:"Cormorant Garamond",serif;
+  font-size:22px;
+  letter-spacing:.22em;
+  margin-top:12px;
+}
+.date{
+  margin:38px 0 32px;
+  color:var(--gold);
+  font-family:"Cormorant Garamond",serif;
+  font-size:28px;
+  letter-spacing:.18em;
+}
+.line{width:75px;height:1px;background:var(--gold);margin:0 auto 35px}
+
+.details{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:28px 18px;
+  margin-top:10px;
+}
+.detail h3{
+  margin:0 0 10px;
+  color:var(--gold);
+  font-family:"Cormorant Garamond",serif;
+  font-size:18px;
+  letter-spacing:.13em;
+  font-weight:500;
+}
+.detail p{
+  margin:0;
+  font-size:11px;
+  line-height:1.7;
+  letter-spacing:.05em;
+}
+.place{grid-column:1/-1}
+.footer-leaves{
+  margin:42px auto 0;
+  width:150px;
+  height:35px;
+  position:relative;
+}
+.footer-leaves:before,.footer-leaves:after{
+  content:"";
+  position:absolute;
+  top:15px;
+  width:72px;height:1px;
+  background:var(--sage-dark);
+}
+.footer-leaves:before{left:0;transform:rotate(-18deg)}
+.footer-leaves:after{right:0;transform:rotate(18deg)}
+.heart{color:var(--gold);font-size:17px;position:relative;z-index:1;background:var(--paper);padding:0 9px}
+
+@media(max-width:480px){
+  .page{padding:0}
+  .invitation{border-radius:0;min-height:100svh}
+  .envelope-screen{min-height:100svh}
+  .content{padding:65px 24px 45px}
+  .details{gap:24px 10px}
+}
+</style>
+</head>
+<body>
+
+<main class="page">
+
+  <svg class="botanical top" width="310" height="260" viewBox="0 0 310 260" aria-hidden="true">
+    <path class="leaf" d="M30 210 C90 120 140 75 275 25 C180 105 120 170 30 210Z"/>
+    <ellipse class="leaf" cx="87" cy="157" rx="18" ry="52" transform="rotate(42 87 157)"/>
+    <ellipse class="leaf" cx="121" cy="121" rx="17" ry="49" transform="rotate(48 121 121)"/>
+    <ellipse class="leaf" cx="157" cy="94" rx="15" ry="45" transform="rotate(57 157 94)"/>
+    <ellipse class="leaf" cx="199" cy="65" rx="14" ry="42" transform="rotate(65 199 65)"/>
+    <ellipse class="leaf" cx="70" cy="184" rx="14" ry="42" transform="rotate(-38 70 184)"/>
+  </svg>
+
+  <svg class="botanical bottom" width="330" height="280" viewBox="0 0 330 280" aria-hidden="true">
+    <path class="leaf" d="M20 225 C90 120 160 70 310 35 C205 115 135 185 20 225Z"/>
+    <ellipse class="leaf" cx="100" cy="160" rx="17" ry="52" transform="rotate(35 100 160)"/>
+    <ellipse class="leaf" cx="143" cy="126" rx="16" ry="47" transform="rotate(48 143 126)"/>
+    <ellipse class="leaf" cx="185" cy="97" rx="15" ry="43" transform="rotate(58 185 97)"/>
+  </svg>
+
+  <section class="invitation">
+
+    <div class="envelope-screen" id="envelopeScreen">
+      <div class="envelope-wrap" id="envelopeWrap" aria-label="Abrir invitación">
+        <div class="envelope">
+          <div class="flap"></div>
+          <div class="seal"><span>A&nbsp;&amp;&nbsp;F</span></div>
+        </div>
+      </div>
+
+      <div class="instruction">DESLIZA</div>
+      <div class="arrow"></div>
+      <div class="hint">desliza hacia arriba o toca el sobre</div>
+    </div>
+
+    <section class="content">
+      <div class="kicker">NOS CASAMOS</div>
+
+      <div class="names">ANA MARÍA</div>
+      <div class="surnames">BARRIO BERROCAL</div>
+
+      <div class="and">Y</div>
+
+      <div class="names">FRANCISCO</div>
+      <div class="surnames">SENDRA MÁRQUEZ</div>
+
+      <div class="date">31 · 10 · 2026</div>
+      <div class="line"></div>
+
+      <div class="details">
+        <div class="detail">
+          <h3>LLEGADA</h3>
+          <p>13.00 h</p>
+        </div>
+
+        <div class="detail">
+          <h3>CEREMONIA</h3>
+          <p>13.30 h</p>
+        </div>
+
+        <div class="detail place">
+          <h3>LUGAR</h3>
+          <p>
+            Club de Tenis y Padel Lew Hoad<br>
+            Ctra. Mijas-Fuengirola, km 3.5<br>
+            29650 Mijas, Málaga
+          </p>
+        </div>
+      </div>
+
+      <div class="footer-leaves"><span class="heart">♡</span></div>
+    </section>
+  </section>
+</main>
+
+<script>
+const screen = document.getElementById('envelopeScreen');
+const wrap = document.getElementById('envelopeWrap');
+let startY = null;
+let opened = false;
+
+function openInvitation(){
+  if(opened) return;
+  opened = true;
+  screen.classList.add('opening');
+  setTimeout(() => screen.classList.add('opened'), 850);
+}
+
+wrap.addEventListener('click', openInvitation);
+
+wrap.addEventListener('touchstart', e => {
+  startY = e.touches[0].clientY;
+}, {passive:true});
+
+wrap.addEventListener('touchend', e => {
+  if(startY === null) return;
+  const endY = e.changedTouches[0].clientY;
+  if(startY - endY > 35) openInvitation();
+  startY = null;
+});
+</script>
+
+</body>
+</html>
