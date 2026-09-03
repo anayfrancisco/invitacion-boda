@@ -6,8 +6,10 @@
 <title>Ana María & Francisco — 31.10.2026</title>
 <meta name="description" content="Invitación de boda de Ana María y Francisco · 31 de octubre de 2026">
 <style>
+/* Importación de tipografías: Cormorant Garamond para elegancia y Montserrat para legibilidad */
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Montserrat:wght@300;400;500&display=swap');
 
+/* Variables de color para un mantenimiento fácil */
 :root{
   --sage:#a9bdb2;
   --sage-dark:#66867a;
@@ -17,15 +19,18 @@
 }
 
 *{box-sizing:border-box}
-html,body{margin:0;min-height:100%;font-family:Montserrat,sans-serif;color:var(--ink)}
+html,body{margin:0;min-height:100%;font-family:Montserrat,sans-serif;color:var(--ink); -webkit-font-smoothing: antialiased;}
+
+/* Fondo de la página con un gradiente suave */
 body{
   background:
-    radial-gradient(circle at 12% 18%, rgba(190,211,201,.45), transparent 28%),
-    radial-gradient(circle at 88% 80%, rgba(190,211,201,.45), transparent 30%),
-    #d7e2dc;
+    radial-gradient(circle at 12% 18%, rgba(190,211,201,.2), transparent 28%),
+    radial-gradient(circle at 88% 80%, rgba(190,211,201,.2), transparent 30%),
+    #e9efed;
   overflow-x:hidden;
 }
 
+/* Contenedor principal centrado */
 .page{
   min-height:100svh;
   display:flex;
@@ -36,31 +41,34 @@ body{
   overflow:hidden;
 }
 
-.botanical{position:absolute;opacity:.72;pointer-events:none}
-.botanical.top{top:-20px;left:-35px;transform:rotate(-8deg)}
-.botanical.bottom{right:-50px;bottom:-35px;transform:rotate(170deg)}
-.leaf{fill:#789b8d}
+/* Decoraciones botánicas en SVG */
+.botanical{position:absolute;opacity:.5;pointer-events:none; transition: opacity .3s ease;}
+.botanical.top{top:-30px;left:-45px;transform:rotate(-5deg)}
+.botanical.bottom{right:-60px;bottom:-45px;transform:rotate(175deg)}
+.leaf{fill:#80a294}
 
+/* Estilo de la tarjeta de invitación */
 .invitation{
   width:min(100%, 520px);
   min-height:760px;
   position:relative;
-  border-radius:3px;
-  background:rgba(250,249,245,.96);
-  box-shadow:0 28px 65px rgba(62,78,69,.22);
+  border-radius:2px;
+  background:#fff;
+  box-shadow:0 15px 45px rgba(62,78,69,.1);
   overflow:hidden;
   display:flex;
   flex-direction:column;
 }
 
+/* Pantalla del sobre inicial */
 .envelope-screen{
   position:absolute;
   inset:0;
   z-index:10;
   background:
-    radial-gradient(circle at 20% 10%, rgba(218,231,224,.75), transparent 30%),
-    radial-gradient(circle at 90% 85%, rgba(211,226,218,.8), transparent 32%),
-    var(--paper);
+    radial-gradient(circle at 20% 10%, rgba(218,231,224,.5), transparent 30%),
+    radial-gradient(circle at 90% 85%, rgba(211,226,218,.6), transparent 32%),
+    #fff;
   display:flex;
   flex-direction:column;
   align-items:center;
@@ -69,29 +77,34 @@ body{
   transition:opacity .8s ease, visibility .8s ease;
 }
 
+/* Estado cuando la invitación se abre */
 .envelope-screen.opened{
   opacity:0;
   visibility:hidden;
   pointer-events:none;
 }
 
+/* Envoltorio del sobre para la animación */
 .envelope-wrap{
-  width:min(92%,420px);
-  aspect-ratio:1.5;
+  width:min(90%,400px);
+  aspect-ratio:1.45;
   position:relative;
   perspective:1000px;
   touch-action:pan-y;
+  cursor: pointer; /* Indica que se puede clicar */
 }
 
+/* Cuerpo del sobre */
 .envelope{
   position:absolute;
   inset:0;
-  background:#bdcfc6;
-  border-radius:4px;
-  box-shadow:0 20px 35px rgba(55,72,64,.22);
+  background:#c2d1ca;
+  border-radius:3px;
+  box-shadow:0 10px 25px rgba(55,72,64,.12);
   overflow:visible;
 }
 
+/* Triángulos inferiores del sobre */
 .envelope:before,
 .envelope:after{
   content:"";
@@ -105,182 +118,199 @@ body{
 .envelope:before{
   left:0;
   border-width:0 0 100% 50%;
-  border-color:transparent transparent #aec2b9 transparent;
+  border-color:transparent transparent #b3c6bd transparent;
 }
 
 .envelope:after{
   right:0;
   border-width:0 50% 100% 0;
-  border-color:transparent #a5bbb1 transparent transparent;
+  border-color:transparent #adbeb6 transparent transparent;
 }
 
+/* Solapa superior del sobre */
 .flap{
   position:absolute;
   top:0;left:0;
   width:100%;height:64%;
-  background:#c6d5ce;
+  background:#cbd9d2;
   clip-path:polygon(0 0,100% 0,50% 100%);
   transform-origin:top center;
   transition:transform 1s cubic-bezier(.2,.75,.2,1);
   z-index:5;
-  filter:drop-shadow(0 3px 3px rgba(50,70,60,.08));
+  filter:drop-shadow(0 2px 2px rgba(50,70,60,.05));
 }
 
+/* Sello de lacre */
 .seal{
   position:absolute;
   z-index:6;
-  left:50%;top:52%;
+  left:50%;top:50%;
   transform:translate(-50%,-50%);
-  width:68px;height:68px;
+  width:64px;height:64px;
   border-radius:50%;
-  background:radial-gradient(circle at 35% 30%, #d2b878, #9f7b3e);
-  box-shadow:0 5px 12px rgba(74,58,31,.25);
+  background:radial-gradient(circle at 35% 30%, #d8c28a, #ab8d52);
+  box-shadow:0 3px 9px rgba(74,58,31,.2);
   display:grid;
   place-items:center;
   color:white;
   font-family:"Cormorant Garamond",serif;
-  font-size:22px;
+  font-size:24px;
   transition:transform .6s ease, opacity .35s ease;
 }
-.seal span{border:1px solid rgba(255,255,255,.65);width:48px;height:48px;border-radius:50%;display:grid;place-items:center}
+/* Círculo interno y texto centrado del sello */
+.seal span{
+  border:1px solid rgba(255,255,255,.5);
+  width:46px;height:46px;
+  border-radius:50%;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  line-height: 1; /* Para centrado vertical perfecto */
+  padding-bottom: 2px; /* Ajuste óptico fino */
+}
 
+/* Animaciones al abrir */
 .envelope-screen.opening .flap{transform:rotateX(180deg)}
-.envelope-screen.opening .seal{transform:translate(-50%,-50%) scale(.75);opacity:0}
+.envelope-screen.opening .seal{transform:translate(-50%,-50%) scale(.8);opacity:0}
 .envelope-screen.opening .envelope{animation:lift .9s ease forwards}
 
 @keyframes lift{
-  50%{transform:translateY(-18px) scale(1.015)}
-  100%{transform:translateY(-35px) scale(.97);opacity:0}
+  50%{transform:translateY(-15px) scale(1.01)}
+  100%{transform:translateY(-30px) scale(.98);opacity:0}
 }
 
+/* Instrucción de acción */
 .instruction{
-  margin-top:52px;
+  margin-top:55px;
   text-align:center;
   color:var(--gold);
-  letter-spacing:.45em;
-  font-size:12px;
+  letter-spacing:.3em;
+  font-size:13px;
   font-weight:500;
+  text-transform: uppercase;
 }
+/* Flecha animada */
 .arrow{
-  width:20px;height:20px;
+  width:16px;height:16px;
   border-right:1px solid var(--gold);
   border-bottom:1px solid var(--gold);
   transform:rotate(45deg);
-  margin:18px auto 0;
+  margin:16px auto 0;
   animation:bounce 1.5s infinite;
 }
-@keyframes bounce{50%{transform:rotate(45deg) translate(5px,5px)}}
+@keyframes bounce{50%{transform:rotate(45deg) translate(4px,4px)}}
 
-.hint{
-  margin-top:25px;
-  font-size:10px;
-  letter-spacing:.12em;
-  opacity:.6;
-}
-
+/* Contenido de la invitación */
 .content{
   min-height:100svh;
-  padding:72px 38px 55px;
+  padding:75px 40px 60px;
   text-align:center;
   position:relative;
   background:
-    linear-gradient(rgba(255,255,255,.62),rgba(255,255,255,.62)),
-    radial-gradient(circle at 10% 30%, rgba(194,218,207,.55), transparent 30%),
-    radial-gradient(circle at 95% 70%, rgba(194,218,207,.55), transparent 30%);
+    radial-gradient(circle at 10% 25%, rgba(194,218,207,.2), transparent 30%),
+    radial-gradient(circle at 95% 75%, rgba(194,218,207,.2), transparent 30%);
 }
 
+/* Decoración sutil de puntos */
 .content:before{
   content:"";
   position:absolute;
-  top:-10px;right:-15px;
-  width:190px;height:190px;
+  top:-15px;right:-20px;
+  width:180px;height:180px;
   background:
-    radial-gradient(ellipse at 20% 50%, #8faea1 0 5%, transparent 6%),
-    radial-gradient(ellipse at 35% 35%, #789b8d 0 5%, transparent 6%),
-    radial-gradient(ellipse at 50% 20%, #9ab6aa 0 6%, transparent 7%);
-  opacity:.35;
-  transform:rotate(25deg);
-  filter:blur(.2px);
+    radial-gradient(ellipse at 20% 50%, #a4bdb2 0 5%, transparent 6%),
+    radial-gradient(ellipse at 35% 35%, #8ba699 0 5%, transparent 6%),
+    radial-gradient(ellipse at 50% 20%, #aec2b9 0 6%, transparent 7%);
+  opacity:.2;
+  transform:rotate(20deg);
+  filter:blur(.1px);
 }
 
 .kicker{
-  font-size:11px;
-  letter-spacing:.38em;
-  margin-bottom:26px;
+  font-size:12px;
+  letter-spacing:.35em;
+  margin-bottom:28px;
+  color: var(--sage-dark);
 }
 .names{
   font-family:"Cormorant Garamond",serif;
   color:var(--gold);
-  font-size:clamp(44px,10vw,66px);
-  line-height:.86;
-  letter-spacing:.08em;
+  font-size:clamp(46px,11vw,68px);
+  line-height:.8;
+  letter-spacing:.06em;
   font-weight:500;
 }
 .and{
   font-family:"Cormorant Garamond",serif;
-  font-size:25px;
+  font-size:26px;
   color:var(--gold);
-  margin:18px 0;
+  margin:20px 0;
 }
 .surnames{
   font-family:"Cormorant Garamond",serif;
-  font-size:22px;
-  letter-spacing:.22em;
+  font-size:23px;
+  letter-spacing:.2em;
   margin-top:12px;
 }
 .date{
-  margin:38px 0 32px;
+  margin:40px 0 35px;
   color:var(--gold);
   font-family:"Cormorant Garamond",serif;
-  font-size:28px;
-  letter-spacing:.18em;
+  font-size:30px;
+  letter-spacing:.15em;
 }
-.line{width:75px;height:1px;background:var(--gold);margin:0 auto 35px}
+.line{width:70px;height:1px;background:var(--gold);margin:0 auto 38px}
 
 .details{
   display:grid;
   grid-template-columns:1fr 1fr;
-  gap:28px 18px;
+  gap:30px 20px;
   margin-top:10px;
 }
 .detail h3{
-  margin:0 0 10px;
+  margin:0 0 11px;
   color:var(--gold);
   font-family:"Cormorant Garamond",serif;
-  font-size:18px;
-  letter-spacing:.13em;
+  font-size:19px;
+  letter-spacing:.12em;
   font-weight:500;
 }
 .detail p{
   margin:0;
-  font-size:11px;
+  font-size:11.5px;
   line-height:1.7;
-  letter-spacing:.05em;
+  letter-spacing:.04em;
 }
 .place{grid-column:1/-1}
+
+/* Pie de página con hojas y corazón */
 .footer-leaves{
-  margin:42px auto 0;
-  width:150px;
+  margin:45px auto 0;
+  width:140px;
   height:35px;
   position:relative;
 }
 .footer-leaves:before,.footer-leaves:after{
   content:"";
   position:absolute;
-  top:15px;
-  width:72px;height:1px;
+  top:16px;
+  width:68px;height:1px;
   background:var(--sage-dark);
+  opacity: .7;
 }
-.footer-leaves:before{left:0;transform:rotate(-18deg)}
-.footer-leaves:after{right:0;transform:rotate(18deg)}
-.heart{color:var(--gold);font-size:17px;position:relative;z-index:1;background:var(--paper);padding:0 9px}
+.footer-leaves:before{left:0;transform:rotate(-16deg)}
+.footer-leaves:after{right:0;transform:rotate(16deg)}
+.heart{color:var(--gold);font-size:16px;position:relative;z-index:1;background:#fff;padding:0 8px}
 
+/* Ajustes para móviles */
 @media(max-width:480px){
   .page{padding:0}
-  .invitation{border-radius:0;min-height:100svh}
-  .envelope-screen{min-height:100svh}
-  .content{padding:65px 24px 45px}
-  .details{gap:24px 10px}
+  .invitation{border-radius:0;min-height:100svh; box-shadow: none;}
+  .envelope-screen{min-height:100svh; padding: 25px;}
+  .content{padding:68px 25px 48px}
+  .details{gap:25px 12px}
+  .names { font-size: 50px; }
+  .botanical { opacity: 0.3; } /* Más sutil en móvil */
 }
 </style>
 </head>
@@ -307,16 +337,15 @@ body{
   <section class="invitation">
 
     <div class="envelope-screen" id="envelopeScreen">
-      <div class="envelope-wrap" id="envelopeWrap" aria-label="Abrir invitación">
+      <div class="envelope-wrap" id="envelopeWrap" aria-label="Tocar el sobre para abrir la invitación">
         <div class="envelope">
           <div class="flap"></div>
-          <div class="seal"><span>A&nbsp;&amp;&nbsp;F</span></div>
+          <div class="seal"><span>A y F</span></div>
         </div>
       </div>
 
-      <div class="instruction">DESLIZA</div>
+      <div class="instruction">toca el sobre</div>
       <div class="arrow"></div>
-      <div class="hint">desliza hacia arriba o toca el sobre</div>
     </div>
 
     <section class="content">
@@ -360,30 +389,22 @@ body{
 </main>
 
 <script>
+// Lógica JavaScript para la animación de apertura
 const screen = document.getElementById('envelopeScreen');
 const wrap = document.getElementById('envelopeWrap');
-let startY = null;
 let opened = false;
 
+// Función para abrir la invitación con animaciones CSS
 function openInvitation(){
-  if(opened) return;
+  if(opened) return; // Previene múltiples clics
   opened = true;
-  screen.classList.add('opening');
-  setTimeout(() => screen.classList.add('opened'), 850);
+  screen.classList.add('opening'); // Inicia animación de solapa y sobre
+  // Espera a que terminen las animaciones principales antes de ocultar la pantalla
+  setTimeout(() => screen.classList.add('opened'), 850); 
 }
 
+// Evento de clic para computadoras y toques
 wrap.addEventListener('click', openInvitation);
-
-wrap.addEventListener('touchstart', e => {
-  startY = e.touches[0].clientY;
-}, {passive:true});
-
-wrap.addEventListener('touchend', e => {
-  if(startY === null) return;
-  const endY = e.changedTouches[0].clientY;
-  if(startY - endY > 35) openInvitation();
-  startY = null;
-});
 </script>
 
 </body>
