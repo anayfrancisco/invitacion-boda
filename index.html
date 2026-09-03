@@ -6,10 +6,9 @@
 <title>Ana María & Francisco — 31.10.2026</title>
 <meta name="description" content="Invitación de boda de Ana María y Francisco · 31 de octubre de 2026">
 <style>
-/* Importación de tipografías: Cormorant Garamond para elegancia y Montserrat para legibilidad */
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Montserrat:wght@300;400;500&display=swap');
+/* Importación de tipografías */
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Montserrat:wght@300;400;500&display=swap');
 
-/* Variables de color para un mantenimiento fácil */
 :root{
   --sage:#a9bdb2;
   --sage-dark:#66867a;
@@ -19,9 +18,8 @@
 }
 
 *{box-sizing:border-box}
-html,body{margin:0;min-height:100%;font-family:Montserrat,sans-serif;color:var(--ink); -webkit-font-smoothing: antialiased;}
+html,body{margin:0;min-height:100%;font-family:Montserrat,sans-serif;color:var(--ink);-webkit-font-smoothing:antialiased}
 
-/* Fondo de la página con un gradiente suave */
 body{
   background:
     radial-gradient(circle at 12% 18%, rgba(190,211,201,.2), transparent 28%),
@@ -30,7 +28,6 @@ body{
   overflow-x:hidden;
 }
 
-/* Contenedor principal centrado */
 .page{
   min-height:100svh;
   display:flex;
@@ -41,13 +38,11 @@ body{
   overflow:hidden;
 }
 
-/* Decoraciones botánicas en SVG */
-.botanical{position:absolute;opacity:.5;pointer-events:none; transition: opacity .3s ease;}
+.botanical{position:absolute;opacity:.5;pointer-events:none;transition:opacity .3s ease}
 .botanical.top{top:-30px;left:-45px;transform:rotate(-5deg)}
 .botanical.bottom{right:-60px;bottom:-45px;transform:rotate(175deg)}
 .leaf{fill:#80a294}
 
-/* Estilo de la tarjeta de invitación */
 .invitation{
   width:min(100%, 520px);
   min-height:760px;
@@ -60,7 +55,6 @@ body{
   flex-direction:column;
 }
 
-/* Pantalla del sobre inicial */
 .envelope-screen{
   position:absolute;
   inset:0;
@@ -77,24 +71,21 @@ body{
   transition:opacity .8s ease, visibility .8s ease;
 }
 
-/* Estado cuando la invitación se abre */
 .envelope-screen.opened{
   opacity:0;
   visibility:hidden;
   pointer-events:none;
 }
 
-/* Envoltorio del sobre para la animación */
 .envelope-wrap{
   width:min(90%,400px);
   aspect-ratio:1.45;
   position:relative;
   perspective:1000px;
   touch-action:pan-y;
-  cursor: pointer; /* Indica que se puede clicar */
+  cursor:pointer;
 }
 
-/* Cuerpo del sobre */
 .envelope{
   position:absolute;
   inset:0;
@@ -104,7 +95,6 @@ body{
   overflow:visible;
 }
 
-/* Triángulos inferiores del sobre */
 .envelope:before,
 .envelope:after{
   content:"";
@@ -127,7 +117,6 @@ body{
   border-color:transparent #adbeb6 transparent transparent;
 }
 
-/* Solapa superior del sobre */
 .flap{
   position:absolute;
   top:0;left:0;
@@ -140,36 +129,40 @@ body{
   filter:drop-shadow(0 2px 2px rgba(50,70,60,.05));
 }
 
-/* Sello de lacre */
+/* --- SELLO Y CENTRADO DE "A y F" --- */
 .seal{
   position:absolute;
   z-index:6;
   left:50%;top:50%;
   transform:translate(-50%,-50%);
-  width:64px;height:64px;
+  width:68px;height:68px;
   border-radius:50%;
   background:radial-gradient(circle at 35% 30%, #d8c28a, #ab8d52);
   box-shadow:0 3px 9px rgba(74,58,31,.2);
-  display:grid;
-  place-items:center;
-  color:white;
-  font-family:"Cormorant Garamond",serif;
-  font-size:24px;
+  display:flex;
+  justify-content:center;
+  align-items:center;
   transition:transform .6s ease, opacity .35s ease;
 }
-/* Círculo interno y texto centrado del sello */
+
 .seal span{
-  border:1px solid rgba(255,255,255,.5);
-  width:46px;height:46px;
+  border:1px solid rgba(255,255,255,.55);
+  width:50px;height:50px;
   border-radius:50%;
   display:flex;
-  justify-content: center;
-  align-items: center;
-  line-height: 1; /* Para centrado vertical perfecto */
-  padding-bottom: 2px; /* Ajuste óptico fino */
+  justify-content:center;
+  align-items:center;
+  color:#ffffff;
+  font-family:"Cormorant Garamond", serif;
+  font-size:19px;
+  font-weight:500;
+  letter-spacing:0.02em;
+  text-align:center;
+  line-height:1;
+  padding-top:1px; /* Ajuste óptico vertical */
+  white-space:nowrap;
 }
 
-/* Animaciones al abrir */
 .envelope-screen.opening .flap{transform:rotateX(180deg)}
 .envelope-screen.opening .seal{transform:translate(-50%,-50%) scale(.8);opacity:0}
 .envelope-screen.opening .envelope{animation:lift .9s ease forwards}
@@ -179,7 +172,6 @@ body{
   100%{transform:translateY(-30px) scale(.98);opacity:0}
 }
 
-/* Instrucción de acción */
 .instruction{
   margin-top:55px;
   text-align:center;
@@ -187,9 +179,9 @@ body{
   letter-spacing:.3em;
   font-size:13px;
   font-weight:500;
-  text-transform: uppercase;
+  text-transform:uppercase;
 }
-/* Flecha animada */
+
 .arrow{
   width:16px;height:16px;
   border-right:1px solid var(--gold);
@@ -200,7 +192,6 @@ body{
 }
 @keyframes bounce{50%{transform:rotate(45deg) translate(4px,4px)}}
 
-/* Contenido de la invitación */
 .content{
   min-height:100svh;
   padding:75px 40px 60px;
@@ -211,7 +202,6 @@ body{
     radial-gradient(circle at 95% 75%, rgba(194,218,207,.2), transparent 30%);
 }
 
-/* Decoración sutil de puntos */
 .content:before{
   content:"";
   position:absolute;
@@ -230,7 +220,7 @@ body{
   font-size:12px;
   letter-spacing:.35em;
   margin-bottom:28px;
-  color: var(--sage-dark);
+  color:var(--sage-dark);
 }
 .names{
   font-family:"Cormorant Garamond",serif;
@@ -283,7 +273,6 @@ body{
 }
 .place{grid-column:1/-1}
 
-/* Pie de página con hojas y corazón */
 .footer-leaves{
   margin:45px auto 0;
   width:140px;
@@ -296,21 +285,20 @@ body{
   top:16px;
   width:68px;height:1px;
   background:var(--sage-dark);
-  opacity: .7;
+  opacity:.7;
 }
 .footer-leaves:before{left:0;transform:rotate(-16deg)}
 .footer-leaves:after{right:0;transform:rotate(16deg)}
 .heart{color:var(--gold);font-size:16px;position:relative;z-index:1;background:#fff;padding:0 8px}
 
-/* Ajustes para móviles */
 @media(max-width:480px){
   .page{padding:0}
-  .invitation{border-radius:0;min-height:100svh; box-shadow: none;}
-  .envelope-screen{min-height:100svh; padding: 25px;}
+  .invitation{border-radius:0;min-height:100svh;box-shadow:none}
+  .envelope-screen{min-height:100svh;padding:25px}
   .content{padding:68px 25px 48px}
   .details{gap:25px 12px}
-  .names { font-size: 50px; }
-  .botanical { opacity: 0.3; } /* Más sutil en móvil */
+  .names{font-size:50px}
+  .botanical{opacity:0.3}
 }
 </style>
 </head>
@@ -389,21 +377,17 @@ body{
 </main>
 
 <script>
-// Lógica JavaScript para la animación de apertura
 const screen = document.getElementById('envelopeScreen');
 const wrap = document.getElementById('envelopeWrap');
 let opened = false;
 
-// Función para abrir la invitación con animaciones CSS
 function openInvitation(){
-  if(opened) return; // Previene múltiples clics
+  if(opened) return;
   opened = true;
-  screen.classList.add('opening'); // Inicia animación de solapa y sobre
-  // Espera a que terminen las animaciones principales antes de ocultar la pantalla
+  screen.classList.add('opening');
   setTimeout(() => screen.classList.add('opened'), 850); 
 }
 
-// Evento de clic para computadoras y toques
 wrap.addEventListener('click', openInvitation);
 </script>
 
