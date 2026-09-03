@@ -6,25 +6,18 @@
 <title>Ana María & Francisco — 31.10.2026</title>
 <meta name="description" content="Invitación de boda de Ana María y Francisco · 31 de octubre de 2026">
 <style>
-/* Importación de tipografías */
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Montserrat:wght@300;400;500&display=swap');
 
 :root{
-  --sage:#a9bdb2;
-  --sage-dark:#66867a;
-  --paper:#faf9f5;
   --gold:#b39155;
-  --ink:#4d514d;
+  --ink:#4a524d;
 }
 
 *{box-sizing:border-box}
 html,body{margin:0;min-height:100%;font-family:Montserrat,sans-serif;color:var(--ink);-webkit-font-smoothing:antialiased}
 
 body{
-  background:
-    radial-gradient(circle at 12% 18%, rgba(190,211,201,.2), transparent 28%),
-    radial-gradient(circle at 88% 80%, rgba(190,211,201,.2), transparent 30%),
-    #e9efed;
+  background:#e8ece9;
   overflow-x:hidden;
 }
 
@@ -33,41 +26,33 @@ body{
   display:flex;
   justify-content:center;
   align-items:center;
-  padding:28px 14px;
+  padding:20px 10px;
   position:relative;
-  overflow:hidden;
 }
 
-.botanical{position:absolute;opacity:.5;pointer-events:none;transition:opacity .3s ease}
-.botanical.top{top:-30px;left:-45px;transform:rotate(-5deg)}
-.botanical.bottom{right:-60px;bottom:-45px;transform:rotate(175deg)}
-.leaf{fill:#80a294}
-
 .invitation{
-  width:min(100%, 520px);
-  min-height:760px;
+  width:min(100%, 480px);
+  min-height:720px;
   position:relative;
-  border-radius:2px;
-  background:#fff;
-  box-shadow:0 15px 45px rgba(62,78,69,.1);
+  border-radius:4px;
+  background:#ffffff;
+  box-shadow:0 20px 50px rgba(45,60,53,.12);
   overflow:hidden;
   display:flex;
   flex-direction:column;
 }
 
+/* PANTALLA DEL SOBRE */
 .envelope-screen{
   position:absolute;
   inset:0;
   z-index:10;
-  background:
-    radial-gradient(circle at 20% 10%, rgba(218,231,224,.5), transparent 30%),
-    radial-gradient(circle at 90% 85%, rgba(211,226,218,.6), transparent 32%),
-    #fff;
+  background:#fafcfb;
   display:flex;
   flex-direction:column;
   align-items:center;
   justify-content:center;
-  padding:35px;
+  padding:20px;
   transition:opacity .8s ease, visibility .8s ease;
 }
 
@@ -78,7 +63,7 @@ body{
 }
 
 .envelope-wrap{
-  width:min(90%,400px);
+  width:min(92%,380px);
   aspect-ratio:1.45;
   position:relative;
   perspective:1000px;
@@ -89,9 +74,9 @@ body{
 .envelope{
   position:absolute;
   inset:0;
-  background:#c2d1ca;
+  background:#c0d2ca;
   border-radius:3px;
-  box-shadow:0 10px 25px rgba(55,72,64,.12);
+  box-shadow:0 12px 30px rgba(55,72,64,.15);
   overflow:visible;
 }
 
@@ -108,37 +93,37 @@ body{
 .envelope:before{
   left:0;
   border-width:0 0 100% 50%;
-  border-color:transparent transparent #b3c6bd transparent;
+  border-color:transparent transparent #b1c5bd transparent;
 }
 
 .envelope:after{
   right:0;
   border-width:0 50% 100% 0;
-  border-color:transparent #adbeb6 transparent transparent;
+  border-color:transparent #a8bcb4 transparent transparent;
 }
 
 .flap{
   position:absolute;
   top:0;left:0;
   width:100%;height:64%;
-  background:#cbd9d2;
+  background:#c9dad2;
   clip-path:polygon(0 0,100% 0,50% 100%);
   transform-origin:top center;
   transition:transform 1s cubic-bezier(.2,.75,.2,1);
   z-index:5;
-  filter:drop-shadow(0 2px 2px rgba(50,70,60,.05));
+  filter:drop-shadow(0 2px 3px rgba(50,70,60,.08));
 }
 
-/* --- SELLO Y CENTRADO DE "A y F" --- */
+/* SELLO CON "A y F" CENTRADO */
 .seal{
   position:absolute;
   z-index:6;
   left:50%;top:50%;
   transform:translate(-50%,-50%);
-  width:68px;height:68px;
+  width:66px;height:66px;
   border-radius:50%;
   background:radial-gradient(circle at 35% 30%, #d8c28a, #ab8d52);
-  box-shadow:0 3px 9px rgba(74,58,31,.2);
+  box-shadow:0 4px 12px rgba(74,58,31,.22);
   display:flex;
   justify-content:center;
   align-items:center;
@@ -146,20 +131,20 @@ body{
 }
 
 .seal span{
-  border:1px solid rgba(255,255,255,.55);
-  width:50px;height:50px;
+  border:1px solid rgba(255,255,255,.6);
+  width:48px;height:48px;
   border-radius:50%;
   display:flex;
   justify-content:center;
   align-items:center;
   color:#ffffff;
   font-family:"Cormorant Garamond", serif;
-  font-size:19px;
+  font-size:18px;
   font-weight:500;
   letter-spacing:0.02em;
   text-align:center;
   line-height:1;
-  padding-top:1px; /* Ajuste óptico vertical */
+  padding-top:1px;
   white-space:nowrap;
 }
 
@@ -173,157 +158,130 @@ body{
 }
 
 .instruction{
-  margin-top:55px;
+  margin-top:40px;
   text-align:center;
   color:var(--gold);
-  letter-spacing:.3em;
-  font-size:13px;
+  letter-spacing:.25em;
+  font-size:12px;
   font-weight:500;
   text-transform:uppercase;
+  padding:0 10px;
 }
 
-.arrow{
-  width:16px;height:16px;
-  border-right:1px solid var(--gold);
-  border-bottom:1px solid var(--gold);
-  transform:rotate(45deg);
-  margin:16px auto 0;
-  animation:bounce 1.5s infinite;
-}
-@keyframes bounce{50%{transform:rotate(45deg) translate(4px,4px)}}
-
+/* TARJETA LIMPIA DE LA BODA */
 .content{
   min-height:100svh;
-  padding:75px 40px 60px;
+  padding:65px 30px 45px;
   text-align:center;
   position:relative;
-  background:
-    radial-gradient(circle at 10% 25%, rgba(194,218,207,.2), transparent 30%),
-    radial-gradient(circle at 95% 75%, rgba(194,218,207,.2), transparent 30%);
-}
-
-.content:before{
-  content:"";
-  position:absolute;
-  top:-15px;right:-20px;
-  width:180px;height:180px;
-  background:
-    radial-gradient(ellipse at 20% 50%, #a4bdb2 0 5%, transparent 6%),
-    radial-gradient(ellipse at 35% 35%, #8ba699 0 5%, transparent 6%),
-    radial-gradient(ellipse at 50% 20%, #aec2b9 0 6%, transparent 7%);
-  opacity:.2;
-  transform:rotate(20deg);
-  filter:blur(.1px);
+  background:#ffffff;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
 }
 
 .kicker{
-  font-size:12px;
-  letter-spacing:.35em;
-  margin-bottom:28px;
-  color:var(--sage-dark);
+  font-size:11px;
+  letter-spacing:.32em;
+  margin-bottom:24px;
+  color:#738078;
+  font-weight:400;
 }
+
 .names{
   font-family:"Cormorant Garamond",serif;
   color:var(--gold);
-  font-size:clamp(46px,11vw,68px);
-  line-height:.8;
-  letter-spacing:.06em;
+  font-size:clamp(38px, 9vw, 54px);
+  line-height:.9;
+  letter-spacing:.08em;
   font-weight:500;
 }
+
 .and{
   font-family:"Cormorant Garamond",serif;
-  font-size:26px;
+  font-size:22px;
   color:var(--gold);
-  margin:20px 0;
+  margin:16px 0;
+  font-style:italic;
 }
+
 .surnames{
   font-family:"Cormorant Garamond",serif;
-  font-size:23px;
-  letter-spacing:.2em;
-  margin-top:12px;
+  font-size:19px;
+  letter-spacing:.22em;
+  margin-top:8px;
+  color:var(--ink);
+  opacity:.9;
 }
+
 .date{
-  margin:40px 0 35px;
+  margin:32px 0 25px;
   color:var(--gold);
   font-family:"Cormorant Garamond",serif;
-  font-size:30px;
-  letter-spacing:.15em;
+  font-size:26px;
+  letter-spacing:.18em;
 }
-.line{width:70px;height:1px;background:var(--gold);margin:0 auto 38px}
 
+.line{width:60px;height:1px;background:var(--gold);margin:0 auto 28px;opacity:.7}
+
+/* SECCIÓN DE DETALLES */
 .details{
   display:grid;
   grid-template-columns:1fr 1fr;
-  gap:30px 20px;
+  gap:22px 15px;
   margin-top:10px;
 }
+
+.detail-icon{
+  width:22px;
+  height:22px;
+  margin:0 auto 6px;
+  display:block;
+}
+
+.detail-icon path,
+.detail-icon circle{
+  stroke:var(--gold);
+  fill:none;
+}
+
 .detail h3{
-  margin:0 0 11px;
+  margin:0 0 6px;
   color:var(--gold);
   font-family:"Cormorant Garamond",serif;
-  font-size:19px;
-  letter-spacing:.12em;
+  font-size:17px;
+  letter-spacing:.14em;
   font-weight:500;
 }
+
 .detail p{
   margin:0;
-  font-size:11.5px;
-  line-height:1.7;
-  letter-spacing:.04em;
+  font-size:11px;
+  line-height:1.6;
+  letter-spacing:.03em;
 }
+
 .place{grid-column:1/-1}
 
-.footer-leaves{
-  margin:45px auto 0;
-  width:140px;
-  height:35px;
-  position:relative;
-}
-.footer-leaves:before,.footer-leaves:after{
-  content:"";
-  position:absolute;
-  top:16px;
-  width:68px;height:1px;
-  background:var(--sage-dark);
-  opacity:.7;
-}
-.footer-leaves:before{left:0;transform:rotate(-16deg)}
-.footer-leaves:after{right:0;transform:rotate(16deg)}
-.heart{color:var(--gold);font-size:16px;position:relative;z-index:1;background:#fff;padding:0 8px}
-
+/* ADAPTACIÓN MÓVIL */
 @media(max-width:480px){
   .page{padding:0}
-  .invitation{border-radius:0;min-height:100svh;box-shadow:none}
-  .envelope-screen{min-height:100svh;padding:25px}
-  .content{padding:68px 25px 48px}
-  .details{gap:25px 12px}
-  .names{font-size:50px}
-  .botanical{opacity:0.3}
+  .invitation{border-radius:0;min-height:100svh;box-shadow:none;width:100%}
+  .envelope-screen{min-height:100svh;padding:15px}
+  .content{padding:55px 20px 40px}
+  .names{font-size:38px}
+  .surnames{font-size:16px}
+  .date{font-size:22px;margin:24px 0 20px}
+  .details{gap:18px 10px}
 }
 </style>
 </head>
 <body>
 
 <main class="page">
-
-  <svg class="botanical top" width="310" height="260" viewBox="0 0 310 260" aria-hidden="true">
-    <path class="leaf" d="M30 210 C90 120 140 75 275 25 C180 105 120 170 30 210Z"/>
-    <ellipse class="leaf" cx="87" cy="157" rx="18" ry="52" transform="rotate(42 87 157)"/>
-    <ellipse class="leaf" cx="121" cy="121" rx="17" ry="49" transform="rotate(48 121 121)"/>
-    <ellipse class="leaf" cx="157" cy="94" rx="15" ry="45" transform="rotate(57 157 94)"/>
-    <ellipse class="leaf" cx="199" cy="65" rx="14" ry="42" transform="rotate(65 199 65)"/>
-    <ellipse class="leaf" cx="70" cy="184" rx="14" ry="42" transform="rotate(-38 70 184)"/>
-  </svg>
-
-  <svg class="botanical bottom" width="330" height="280" viewBox="0 0 330 280" aria-hidden="true">
-    <path class="leaf" d="M20 225 C90 120 160 70 310 35 C205 115 135 185 20 225Z"/>
-    <ellipse class="leaf" cx="100" cy="160" rx="17" ry="52" transform="rotate(35 100 160)"/>
-    <ellipse class="leaf" cx="143" cy="126" rx="16" ry="47" transform="rotate(48 143 126)"/>
-    <ellipse class="leaf" cx="185" cy="97" rx="15" ry="43" transform="rotate(58 185 97)"/>
-  </svg>
-
   <section class="invitation">
 
+    <!-- SOBRE DE BIENVENIDA -->
     <div class="envelope-screen" id="envelopeScreen">
       <div class="envelope-wrap" id="envelopeWrap" aria-label="Tocar el sobre para abrir la invitación">
         <div class="envelope">
@@ -332,17 +290,18 @@ body{
         </div>
       </div>
 
-      <div class="instruction">toca el sobre</div>
-      <div class="arrow"></div>
+      <div class="instruction">TOCA EL SOBRE PARA ABRIRLO</div>
     </div>
 
+    <!-- TARJETA DE LA BODA (LIMPIA) -->
     <section class="content">
+
       <div class="kicker">NOS CASAMOS</div>
 
       <div class="names">ANA MARÍA</div>
       <div class="surnames">BARRIO BERROCAL</div>
 
-      <div class="and">Y</div>
+      <div class="and">y</div>
 
       <div class="names">FRANCISCO</div>
       <div class="surnames">SENDRA MÁRQUEZ</div>
@@ -351,17 +310,33 @@ body{
       <div class="line"></div>
 
       <div class="details">
+        <!-- LLEGADA -->
         <div class="detail">
+          <svg class="detail-icon" viewBox="0 0 24 24">
+            <circle cx="12" cy="12" r="9" stroke-width="1.3"/>
+            <path d="M12 7v5l3 2" stroke-width="1.3" stroke-linecap="round"/>
+          </svg>
           <h3>LLEGADA</h3>
           <p>13.00 h</p>
         </div>
 
+        <!-- CEREMONIA -->
         <div class="detail">
+          <svg class="detail-icon" viewBox="0 0 24 24">
+            <circle cx="9" cy="13" r="5" stroke-width="1.3"/>
+            <circle cx="15" cy="13" r="5" stroke-width="1.3"/>
+            <path d="M8.5 7.5l1 1M15.5 7.5l-1 1" stroke-width="1.3" stroke-linecap="round"/>
+          </svg>
           <h3>CEREMONIA</h3>
           <p>13.30 h</p>
         </div>
 
+        <!-- LUGAR -->
         <div class="detail place">
+          <svg class="detail-icon" viewBox="0 0 24 24">
+            <path d="M12 21s-6-5.3-6-10a6 6 0 1 1 12 0c0 4.7-6 10-6 10z" stroke-width="1.3"/>
+            <circle cx="12" cy="11" r="2" stroke-width="1.3"/>
+          </svg>
           <h3>LUGAR</h3>
           <p>
             Club de Tenis y Padel Lew Hoad<br>
@@ -371,7 +346,6 @@ body{
         </div>
       </div>
 
-      <div class="footer-leaves"><span class="heart">♡</span></div>
     </section>
   </section>
 </main>
