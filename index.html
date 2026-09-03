@@ -18,7 +18,7 @@
 html,body{margin:0;min-height:100%;font-family:Montserrat,sans-serif;color:var(--ink);-webkit-font-smoothing:antialiased}
 
 body{
-  background:#e8ece9;
+  background:#e3e8e5;
   overflow-x:hidden;
 }
 
@@ -43,12 +43,12 @@ body{
   flex-direction:column;
 }
 
-/* PANTALLA DEL SOBRE */
+/* PANTALLA DEL SOBRE CON TONO MEDIO */
 .envelope-screen{
   position:absolute;
   inset:0;
   z-index:10;
-  background:#fafcfb;
+  background:#f6f8f7;
   display:flex;
   flex-direction:column;
   align-items:center;
@@ -72,12 +72,13 @@ body{
   cursor:pointer;
 }
 
+/* TONO INTERMEDIO Y SUAVE PARA EL SOBRE */
 .envelope{
   position:absolute;
   inset:0;
-  background:#c0d2ca;
+  background:#9db1a7;
   border-radius:3px;
-  box-shadow:0 12px 30px rgba(55,72,64,.15);
+  box-shadow:0 12px 30px rgba(45,60,54,.2);
   overflow:visible;
 }
 
@@ -94,25 +95,26 @@ body{
 .envelope:before{
   left:0;
   border-width:0 0 100% 50%;
-  border-color:transparent transparent #b1c5bd transparent;
+  border-color:transparent transparent #8fa399 transparent;
 }
 
 .envelope:after{
   right:0;
   border-width:0 50% 100% 0;
-  border-color:transparent #a8bcb4 transparent transparent;
+  border-color:transparent #879b91 transparent transparent;
 }
 
+/* SOLAPA SUPERIOR */
 .flap{
   position:absolute;
   top:0;left:0;
   width:100%;height:64%;
-  background:#c9dad2;
+  background:#a8bbb1;
   clip-path:polygon(0 0,100% 0,50% 100%);
   transform-origin:top center;
   transition:transform 1s cubic-bezier(.2,.75,.2,1);
   z-index:5;
-  filter:drop-shadow(0 2px 3px rgba(50,70,60,.08));
+  filter:drop-shadow(0 3px 4px rgba(40,55,48,.12));
 }
 
 /* SELLO CON "A y F" CENTRADO */
@@ -124,7 +126,7 @@ body{
   width:66px;height:66px;
   border-radius:50%;
   background:radial-gradient(circle at 35% 30%, #d8c28a, #ab8d52);
-  box-shadow:0 4px 12px rgba(74,58,31,.22);
+  box-shadow:0 4px 14px rgba(40,30,15,.3);
   display:flex;
   justify-content:center;
   align-items:center;
