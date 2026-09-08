@@ -179,7 +179,7 @@ body{
   padding:0 10px;
 }
 
-/* TARJETA INTERNA CON FONDO MÁS VISIBLE */
+/* TARJETA INTERNA CON TRANSPARENCIA INTERMEDIA */
 .content{
   height:100svh;
   padding: 20px 20px 16px;
@@ -196,12 +196,12 @@ body{
   justify-content:space-evenly;
 }
 
-/* Capa de opacidad reducida para dejar ver la imagen de fondo manteniendo legible el texto */
+/* Capa semitransparente ajustada para equilibrio óptimo */
 .content::before{
   content:"";
   position:absolute;
   inset:0;
-  background:rgba(255, 255, 255, 0.65);
+  background:rgba(255, 255, 255, 0.82);
   z-index:1;
 }
 
@@ -261,7 +261,6 @@ body{
   font-size: clamp(10px, 2.5vw, 11px);
   line-height:1.45;
   color:var(--ink);
-  opacity:1;
   font-weight:500;
   margin:0;
   padding:0 5px;
@@ -346,7 +345,7 @@ body{
   justify-content:space-between;
   align-items:center;
   padding: 3px 0;
-  border-bottom:1px solid rgba(179, 145, 85, 0.3);
+  border-bottom:1px solid rgba(179, 145, 85, 0.25);
   font-size: clamp(10px, 2.6vw, 11px);
 }
 
@@ -384,7 +383,7 @@ body{
   letter-spacing:.12em;
   text-transform:uppercase;
   transition:all .25s ease;
-  background: rgba(255,255,255,0.9);
+  background: rgba(255,255,255,0.85);
 }
 
 .btn-maps svg{
