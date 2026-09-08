@@ -4,9 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <title>Ana & Francis — 31 / 10 / 2026</title>
-<meta name="description" content="Invitación de boda de Ana & Francis · 31 de octubre de 2026">
+<meta name="description" content="Invitación de boda de Ana y Francis · 31 de octubre de 2026">
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,wght@1,300;1,400&family=Cormorant+Garamond:wght@400;500;600&family=Montserrat:wght@300;400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,wght@1,300;1,400&family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap');
 
 :root{
   --gold:#b39155;
@@ -183,7 +183,7 @@ body{
 /* TARJETA INTERNA */
 .content{
   height:100svh;
-  padding: 16px 20px 12px;
+  padding: 14px 20px 10px;
   text-align:center;
   position:relative;
   background:#ffffff;
@@ -238,20 +238,20 @@ body{
   line-height:1;
 }
 
-/* BLOQUE 2: TÍTULO Y TEXTO (Aumentado un punto más) */
+/* BLOQUE 2: TÍTULO Y TEXTO */
 .block-intro{
   display:flex;
   flex-direction:column;
   align-items:center;
-  max-width: 350px;
+  max-width: 360px;
   margin: 0 auto;
 }
 
 .intro-title{
   font-family:"Cormorant Garamond",serif;
-  font-size: clamp(14px, 3.7vw, 16.5px);
+  font-size: clamp(15px, 4.0vw, 17.5px);
   color:var(--gold);
-  margin-bottom: 5px;
+  margin-bottom: 4px;
   letter-spacing:.06em;
   font-weight:600;
   text-transform:uppercase;
@@ -259,7 +259,7 @@ body{
 
 .message-text{
   font-size: clamp(13.5px, 3.5vw, 15px);
-  line-height:1.42;
+  line-height:1.4;
   color:var(--ink);
   font-weight:500;
   margin:0;
@@ -274,7 +274,7 @@ body{
   opacity:.7;
 }
 
-/* BLOQUE 3: CUENTA ATRÁS */
+/* BLOQUE 3: CUENTA ATRÁS (Escalado) */
 .countdown-section{
   margin:0;
 }
@@ -282,17 +282,17 @@ body{
 .countdown-title{
   color:var(--gold);
   font-family:"Cormorant Garamond",serif;
-  font-size: 15px;
+  font-size: clamp(16px, 4.2vw, 18px);
   letter-spacing:.15em;
   text-transform:uppercase;
-  margin-bottom: 5px;
+  margin-bottom: 4px;
   font-weight: 600;
 }
 
 .countdown{
   display:flex;
   justify-content:center;
-  gap: 18px;
+  gap: 20px;
 }
 
 .count-item{
@@ -303,35 +303,36 @@ body{
 
 .count-number{
   font-family:"Cormorant Garamond",serif;
-  font-size: clamp(22px, 5.8vw, 26px);
+  font-size: clamp(24px, 6.2vw, 28px);
   color:var(--ink);
   font-weight:600;
   line-height:1;
 }
 
 .count-label{
-  font-size:9.5px;
+  font-size: 10.5px;
   color:var(--gold);
   text-transform:uppercase;
   letter-spacing:.1em;
-  margin-top:2px;
+  margin-top: 3px;
+  font-weight: 500;
 }
 
-/* BLOQUE 4: ITINERARIO */
+/* BLOQUE 4: ITINERARIO (Escalado) */
 .itinerary-section{
   margin:0;
   width: 100%;
-  max-width: 270px;
+  max-width: 300px;
 }
 
 .itinerary-title{
   color:var(--gold);
   font-family:"Cormorant Garamond",serif;
-  font-size: 16px;
+  font-size: clamp(17px, 4.5vw, 19px);
   letter-spacing:.15em;
   text-transform:uppercase;
-  margin-bottom: 5px;
-  font-weight:500;
+  margin-bottom: 4px;
+  font-weight: 600;
 }
 
 .timeline{
@@ -344,9 +345,9 @@ body{
   display:flex;
   justify-content:space-between;
   align-items:center;
-  padding: 3px 0;
+  padding: 3.5px 4px;
   border-bottom:1px solid rgba(179, 145, 85, 0.25);
-  font-size: clamp(11.5px, 3.0vw, 13px);
+  font-size: clamp(13px, 3.4vw, 14.5px);
 }
 
 .timeline-item:last-child{
@@ -372,23 +373,23 @@ body{
 .btn-maps{
   display:inline-flex;
   align-items:center;
-  gap:7px;
-  padding: 8.5px 22px;
+  gap:8px;
+  padding: 9px 24px;
   border:1px solid var(--gold);
   border-radius:20px;
   color:var(--gold);
   text-decoration:none;
-  font-size:11px;
+  font-size: 11.5px;
   font-weight:600;
   letter-spacing:.12em;
   text-transform:uppercase;
   transition:all .25s ease;
-  background: rgba(255,255,255,0.85);
+  background: rgba(255,255,255,0.88);
 }
 
 .btn-maps svg{
-  width:13px;
-  height:13px;
+  width:14px;
+  height:14px;
   stroke:currentColor;
   fill:none;
 }
