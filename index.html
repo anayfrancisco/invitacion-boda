@@ -1,437 +1,247 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Ana y Francisco · 31/10/2026</title>
-<meta name="description" content="Invitación de boda de Ana y Francisco · 31 de octubre de 2026">
-<style>
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Montserrat:wght@300;400;500;600&display=swap');
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Boda de Ana & Francis</title>
+  <style>
+    :root {
+      --color-primary: #8a7356;
+      --color-bg: #faf8f5;
+      --color-card: #ffffff;
+      --color-text: #2c2c2c;
+      --color-light-text: #666666;
+    }
 
-:root{
-  --gold:#b39155;
-  --gold-hover:#96763d;
-  --ink:#4a524d;
-  
-  /* Tu imagen configurada como fondo */
-  --bg-image: url('9469116_4152950.jpg'); 
-}
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-*{box-sizing:border-box}
-html,body{margin:0;min-height:100%;font-family:Montserrat,sans-serif;color:var(--ink);-webkit-font-smoothing:antialiased}
+    body {
+      font-family: 'Segoe UI', Georgia, serif, sans-serif;
+      background-color: var(--color-bg);
+      color: var(--color-text);
+      line-height: 1.6;
+      display: flex;
+      justify-content: center;
+      padding: 20px 10px;
+    }
 
-body{
-  background:#e3e8e5;
-  overflow-x:hidden;
-}
+    .container {
+      max-width: 650px;
+      width: 100%;
+      background-color: var(--color-card);
+      padding: 40px 25px;
+      border-radius: 16px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+      text-align: center;
+    }
 
-.page{
-  min-height:100svh;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  padding:20px 10px;
-  position:relative;
-}
+    h1.nombres {
+      font-size: 2.5rem;
+      color: var(--color-primary);
+      margin-bottom: 10px;
+      letter-spacing: 1px;
+    }
 
-.invitation{
-  width:min(100%, 480px);
-  min-height:720px;
-  position:relative;
-  border-radius:4px;
-  background:#ffffff;
-  box-shadow:0 20px 50px rgba(45,60,53,.12);
-  overflow:hidden;
-  display:flex;
-  flex-direction:column;
-}
+    .subtitle-main {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: var(--color-primary);
+      margin-bottom: 25px;
+    }
 
-/* PANTALLA DEL SOBRE */
-.envelope-screen{
-  position:absolute;
-  inset:0;
-  z-index:10;
-  background:#f6f8f7;
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  justify-content:center;
-  padding:20px;
-  transition:opacity .8s ease, visibility .8s ease;
-}
+    .mensaje {
+      font-size: 1.05rem;
+      color: var(--color-light-text);
+      font-style: italic;
+      margin-bottom: 35px;
+      padding: 0 10px;
+    }
 
-.envelope-screen.opened{
-  opacity:0;
-  visibility:hidden;
-  pointer-events:none;
-}
+    /* Cuenta atrás */
+    .countdown-section {
+      background-color: var(--color-bg);
+      padding: 25px 15px;
+      border-radius: 12px;
+      margin-bottom: 40px;
+    }
 
-/* TEXTO ENCIMA DEL SOBRE (Mismo estilo que la instrucción) */
-.envelope-title{
-  margin-bottom:40px;
-  text-align:center;
-  color:var(--gold);
-  letter-spacing:.25em;
-  font-size:12px;
-  font-weight:500;
-  text-transform:uppercase;
-  padding:0 10px;
-}
+    .countdown-title {
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: var(--color-primary);
+      margin-bottom: 15px;
+      font-weight: 600;
+    }
 
-.envelope-wrap{
-  width:min(92%,380px);
-  aspect-ratio:1.45;
-  position:relative;
-  perspective:1000px;
-  touch-action:pan-y;
-  cursor:pointer;
-}
+    .countdown-timer {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+    }
 
-.envelope{
-  position:absolute;
-  inset:0;
-  background:#9db1a7;
-  border-radius:3px;
-  box-shadow:0 12px 30px rgba(45,60,54,.2);
-  overflow:visible;
-}
+    .time-block {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-width: 60px;
+    }
 
-.envelope:before,
-.envelope:after{
-  content:"";
-  position:absolute;
-  bottom:0;
-  width:0;height:0;
-  border-style:solid;
-  z-index:3;
-}
+    .time-number {
+      font-size: 1.8rem;
+      font-weight: bold;
+      color: var(--color-primary);
+    }
 
-.envelope:before{
-  left:0;
-  border-width:0 0 100% 50%;
-  border-color:transparent transparent #8fa399 transparent;
-}
+    .time-label {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      color: var(--color-light-text);
+    }
 
-.envelope:after{
-  right:0;
-  border-width:0 50% 100% 0;
-  border-color:transparent #879b91 transparent transparent;
-}
+    /* Itinerario */
+    .section-title {
+      font-size: 1.5rem;
+      color: var(--color-primary);
+      margin-bottom: 25px;
+      position: relative;
+    }
 
-.flap{
-  position:absolute;
-  top:0;left:0;
-  width:100%;height:64%;
-  background:#a8bbb1;
-  clip-path:polygon(0 0,100% 0,50% 100%);
-  transform-origin:top center;
-  transition:transform 1s cubic-bezier(.2,.75,.2,1);
-  z-index:5;
-  filter:drop-shadow(0 3px 4px rgba(40,55,48,.12));
-}
+    .timeline {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      text-align: left;
+      max-width: 400px;
+      margin: 0 auto;
+    }
 
-.seal{
-  position:absolute;
-  z-index:6;
-  left:50%;top:50%;
-  transform:translate(-50%,-50%);
-  width:66px;height:66px;
-  border-radius:50%;
-  background:radial-gradient(circle at 35% 30%, #d8c28a, #ab8d52);
-  box-shadow:0 4px 14px rgba(40,30,15,.3);
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  transition:transform .6s ease, opacity .35s ease;
-}
+    .timeline-item {
+      display: flex;
+      align-items: center;
+      background: var(--color-bg);
+      padding: 12px 20px;
+      border-radius: 8px;
+      border-left: 4px solid var(--color-primary);
+    }
 
-.seal span{
-  border:1px solid rgba(255,255,255,.6);
-  width:48px;height:48px;
-  border-radius:50%;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  color:#ffffff;
-  font-family:"Cormorant Garamond", serif;
-  font-size:18px;
-  font-weight:500;
-  letter-spacing:0.02em;
-  text-align:center;
-  line-height:1;
-  padding-top:1px;
-  white-space:nowrap;
-}
+    .timeline-time {
+      font-weight: bold;
+      color: var(--color-primary);
+      width: 95px;
+      font-size: 1.05rem;
+      flex-shrink: 0;
+    }
 
-.envelope-screen.opening .flap{transform:rotateX(180deg)}
-.envelope-screen.opening .seal{transform:translate(-50%,-50%) scale(.8);opacity:0}
-.envelope-screen.opening .envelope{animation:lift .9s ease forwards}
+    .timeline-event {
+      font-size: 1rem;
+      color: var(--color-text);
+    }
 
-@keyframes lift{
-  50%{transform:translateY(-15px) scale(1.01)}
-  100%{transform:translateY(-30px) scale(.98);opacity:0}
-}
-
-.instruction{
-  margin-top:40px;
-  text-align:center;
-  color:var(--gold);
-  letter-spacing:.25em;
-  font-size:12px;
-  font-weight:500;
-  text-transform:uppercase;
-  padding:0 10px;
-}
-
-/* TARJETA INTERNA CON TU IMAGEN DE FONDO */
-.content{
-  min-height:100svh;
-  padding:50px 30px;
-  text-align:center;
-  position:relative;
-  background:#ffffff;
-  
-  background-image: var(--bg-image);
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-  align-items:center;
-}
-
-/* Velo sutil */
-.content::before{
-  content:"";
-  position:absolute;
-  inset:0;
-  background:rgba(255, 255, 255, 0.82);
-  z-index:1;
-}
-
-.content > *{
-  position:relative;
-  z-index:2;
-  width:100%;
-}
-
-.names{
-  font-family:"Cormorant Garamond",serif;
-  color:var(--gold);
-  font-size:clamp(38px, 9vw, 54px);
-  line-height:.9;
-  letter-spacing:.08em;
-  font-weight:500;
-}
-
-.and{
-  font-family:"Cormorant Garamond",serif;
-  font-size:22px;
-  color:var(--gold);
-  margin:16px 0;
-  font-style:italic;
-}
-
-.surnames{
-  font-family:"Cormorant Garamond",serif;
-  font-size:19px;
-  letter-spacing:.22em;
-  margin-top:8px;
-  color:var(--ink);
-  opacity:.9;
-}
-
-.date{
-  margin:32px 0 25px;
-  color:var(--gold);
-  font-family:"Cormorant Garamond",serif;
-  font-size:26px;
-  letter-spacing:.18em;
-}
-
-.line{width:60px;height:1px;background:var(--gold);margin:0 auto 28px;opacity:.7}
-
-/* SECCIÓN DE DETALLES */
-.details{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:22px 15px;
-  margin-top:10px;
-}
-
-.detail-icon{
-  width:22px;
-  height:22px;
-  margin:0 auto 6px;
-  display:block;
-}
-
-.detail-icon path,
-.detail-icon circle{
-  stroke:var(--gold);
-  fill:none;
-}
-
-.detail h3{
-  margin:0 0 6px;
-  color:var(--gold);
-  font-family:"Cormorant Garamond",serif;
-  font-size:17px;
-  letter-spacing:.14em;
-  font-weight:500;
-}
-
-.detail p{
-  margin:0;
-  font-size:11px;
-  line-height:1.6;
-  letter-spacing:.03em;
-}
-
-.place{grid-column:1/-1}
-
-.btn-maps{
-  display:inline-flex;
-  align-items:center;
-  gap:6px;
-  margin-top:14px;
-  padding:8px 16px;
-  border:1px solid var(--gold);
-  border-radius:20px;
-  color:var(--gold);
-  text-decoration:none;
-  font-size:10.5px;
-  font-weight:500;
-  letter-spacing:.12em;
-  text-transform:uppercase;
-  transition:all .25s ease;
-  background: rgba(255,255,255,0.7);
-}
-
-.btn-maps svg{
-  width:12px;
-  height:12px;
-  stroke:currentColor;
-  fill:none;
-}
-
-.btn-maps:hover, .btn-maps:active{
-  background:var(--gold);
-  color:#ffffff;
-}
-
-.btn-maps:hover svg, .btn-maps:active svg{
-  stroke:#ffffff;
-}
-
-@media(max-width:480px){
-  .page{padding:0}
-  .invitation{border-radius:0;min-height:100svh;box-shadow:none;width:100%}
-  .envelope-screen{min-height:100svh;padding:15px}
-  .content{padding:45px 20px}
-  .names{font-size:38px}
-  .surnames{font-size:16px}
-  .date{font-size:22px;margin:24px 0 20px}
-  .details{gap:18px 10px}
-}
-</style>
+    @media (max-width: 480px) {
+      h1.nombres { font-size: 2rem; }
+      .countdown-timer { gap: 8px; }
+      .time-block { min-width: 50px; }
+      .time-number { font-size: 1.4rem; }
+    }
+  </style>
 </head>
 <body>
 
-<main class="page">
-  <section class="invitation">
+  <div class="container">
+    <h1 class="nombres">Ana & Francis</h1>
+    
+    <p class="subtitle-main">Como ya os adelantamos con gran ilusión, ¡Nos casamos!</p>
+    
+    <p class="mensaje">
+      El camino es más bonito cuando se camina en buena compañía. Por eso, os invitamos a celebrar nuestro enlace matrimonial. Vuestra presencia y cariño son el mejor regalo que podríamos recibir en este inicio de nuestra vida en común.
+    </p>
 
-    <!-- SOBRE DE BIENVENIDA -->
-    <div class="envelope-screen" id="envelopeScreen">
-      
-      <div class="envelope-title">TE INVITAMOS A NUESTRA BODA</div>
-
-      <div class="envelope-wrap" id="envelopeWrap" aria-label="Tocar el sobre para abrir la invitación">
-        <div class="envelope">
-          <div class="flap"></div>
-          <div class="seal"><span>A y F</span></div>
+    <!-- Seccion Cuenta Atrás -->
+    <div class="countdown-section">
+      <div class="countdown-title">Cuenta atrás para el gran día</div>
+      <div class="countdown-timer">
+        <div class="time-block">
+          <span class="time-number" id="days">00</span>
+          <span class="time-label">Días</span>
+        </div>
+        <div class="time-block">
+          <span class="time-number" id="hours">00</span>
+          <span class="time-label">Horas</span>
+        </div>
+        <div class="time-block">
+          <span class="time-number" id="minutes">00</span>
+          <span class="time-label">Min</span>
+        </div>
+        <div class="time-block">
+          <span class="time-number" id="seconds">00</span>
+          <span class="time-label">Seg</span>
         </div>
       </div>
-
-      <div class="instruction">TOCA EL SOBRE PARA ABRIRLO</div>
     </div>
 
-    <!-- TARJETA CON FONDO DE IMAGEN -->
-    <section class="content">
-
-      <div class="names">ANA MARÍA</div>
-      <div class="surnames">BARRIO BERROCAL</div>
-
-      <div class="and">y</div>
-
-      <div class="names">FRANCISCO</div>
-      <div class="surnames">SENDRA MÁRQUEZ</div>
-
-      <div class="date">31 · 10 · 2026</div>
-      <div class="line"></div>
-
-      <div class="details">
-        <div class="detail">
-          <svg class="detail-icon" viewBox="0 0 24 24">
-            <circle cx="12" cy="12" r="9" stroke-width="1.3"/>
-            <path d="M12 7v5l3 2" stroke-width="1.3" stroke-linecap="round"/>
-          </svg>
-          <h3>LLEGADA</h3>
-          <p>13.00 h</p>
-        </div>
-
-        <div class="detail">
-          <svg class="detail-icon" viewBox="0 0 24 24">
-            <circle cx="9" cy="13" r="5" stroke-width="1.3"/>
-            <circle cx="15" cy="13" r="5" stroke-width="1.3"/>
-            <path d="M8.5 7.5l1 1M15.5 7.5l-1 1" stroke-width="1.3" stroke-linecap="round"/>
-          </svg>
-          <h3>CEREMONIA</h3>
-          <p>13.30 h</p>
-        </div>
-
-        <div class="detail place">
-          <svg class="detail-icon" viewBox="0 0 24 24">
-            <path d="M12 21s-6-5.3-6-10a6 6 0 1 1 12 0c0 4.7-6 10-6 10z" stroke-width="1.3"/>
-            <circle cx="12" cy="11" r="2" stroke-width="1.3"/>
-          </svg>
-          <h3>LUGAR</h3>
-          <p>
-            Club de Tenis y Padel Lew Hoad<br>
-            Ctra. Mijas-Fuengirola, km 3.5<br>
-            29650 Mijas, Málaga
-          </p>
-          
-          <a href="https://maps.google.com/?q=Club+de+Tenis+y+Padel+Lew+Hoad+Mijas" target="_blank" rel="noopener noreferrer" class="btn-maps">
-            <svg viewBox="0 0 24 24">
-              <path d="M12 21s-6-5.3-6-10a6 6 0 1 1 12 0c0 4.7-6 10-6 10z" stroke-width="1.5"/>
-              <circle cx="12" cy="11" r="2" stroke-width="1.5"/>
-            </svg>
-            Ver en Maps
-          </a>
-        </div>
+    <!-- Seccion Itinerario -->
+    <h2 class="section-title">Itinerario</h2>
+    <div class="timeline">
+      <div class="timeline-item">
+        <span class="timeline-time">13:00 h</span>
+        <span class="timeline-event">Llegada</span>
       </div>
+      <div class="timeline-item">
+        <span class="timeline-time">13:30 h</span>
+        <span class="timeline-event">Ceremonia</span>
+      </div>
+      <div class="timeline-item">
+        <span class="timeline-time">14:00 h</span>
+        <span class="timeline-event">Cocktail</span>
+      </div>
+      <div class="timeline-item">
+        <span class="timeline-time">15:00 h</span>
+        <span class="timeline-event">Comida</span>
+      </div>
+      <div class="timeline-item">
+        <span class="timeline-time">16:30 h</span>
+        <span class="timeline-event">¡Que empiece la Fiesta!</span>
+      </div>
+    </div>
+  </div>
 
-    </section>
-  </section>
-</main>
+  <script>
+    // Configura aquí la fecha de la boda (Año, Mes - 1, Día, Hora, Minuto)
+    // Nota: Los meses en JavaScript van de 0 (Enero) a 11 (Diciembre)
+    // Ejemplo para el 8 de Noviembre de 2026 a las 13:00:
+    const weddingDate = new Date(2026, 10, 8, 13, 0, 0).getTime();
 
-<script>
-const screen = document.getElementById('envelopeScreen');
-const wrap = document.getElementById('envelopeWrap');
-let opened = false;
+    function updateCountdown() {
+      const now = new Date().getTime();
+      const distance = weddingDate - now;
 
-function openInvitation(){
-  if(opened) return;
-  opened = true;
-  screen.classList.add('opening');
-  setTimeout(() => screen.classList.add('opened'), 850); 
-}
+      if (distance < 0) {
+        document.getElementById("days").innerText = "00";
+        document.getElementById("hours").innerText = "00";
+        document.getElementById("minutes").innerText = "00";
+        document.getElementById("seconds").innerText = "00";
+        return;
+      }
 
-wrap.addEventListener('click', openInvitation);
-</script>
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
+      document.getElementById("days").innerText = days < 10 ? '0' + days : days;
+      document.getElementById("hours").innerText = hours < 10 ? '0' + hours : hours;
+      document.getElementById("minutes").innerText = minutes < 10 ? '0' + minutes : minutes;
+      document.getElementById("seconds").innerText = seconds < 10 ? '0' + seconds : seconds;
+    }
+
+    // Actualiza cada segundo
+    setInterval(updateCountdown, 1000);
+    updateCountdown();
+  </script>
 </body>
 </html>
