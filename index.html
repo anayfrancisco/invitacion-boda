@@ -211,7 +211,7 @@ body{
   width:100%;
 }
 
-/* BLOQUE 1: NOMBRES (Un punto más grandes) */
+/* BLOQUE 1: NOMBRES */
 .block-names{
   display:flex;
   flex-direction:column;
@@ -317,7 +317,7 @@ body{
   margin-top:2px;
 }
 
-/* BLOQUE 4: ITINERARIO (Un poco más estrecho: 270px) */
+/* BLOQUE 4: ITINERARIO */
 .itinerary-section{
   margin:0;
   width: 100%;
@@ -526,14 +526,14 @@ function openInvitation(){
 
 wrap.addEventListener('click', openInvitation);
 
-// Lógica de la Cuenta Atrás (31 de Octubre de 2026 a las 13:00)
+// 31 de octubre de 2026 a las 13:00:00 (Hora local exacta)
 const weddingDate = new Date(2026, 9, 31, 13, 0, 0).getTime();
 
 function updateCountdown() {
   const now = new Date().getTime();
   const distance = weddingDate - now;
 
-  if (distance < 0) {
+  if (distance <= 0) {
     document.getElementById("days").innerText = "00";
     document.getElementById("hours").innerText = "00";
     document.getElementById("minutes").innerText = "00";
