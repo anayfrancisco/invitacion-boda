@@ -179,7 +179,7 @@ body{
   padding:0 10px;
 }
 
-/* TARJETA INTERNA: ESTRUCTURA Y ESPACIADOS VERTICALES */
+/* TARJETA INTERNA CON FONDO MÁS VISIBLE */
 .content{
   height:100svh;
   padding: 20px 20px 16px;
@@ -193,15 +193,15 @@ body{
   display:flex;
   flex-direction:column;
   align-items:center;
-  justify-content:space-evenly; /* Espaciado automático y proporcional entre bloques */
+  justify-content:space-evenly;
 }
 
+/* Capa de opacidad reducida para dejar ver la imagen de fondo manteniendo legible el texto */
 .content::before{
   content:"";
   position:absolute;
   inset:0;
-  background:rgba(255, 255, 255, 0.90);
-  backdrop-filter: blur(2px);
+  background:rgba(255, 255, 255, 0.65);
   z-index:1;
 }
 
@@ -261,7 +261,8 @@ body{
   font-size: clamp(10px, 2.5vw, 11px);
   line-height:1.45;
   color:var(--ink);
-  opacity:.9;
+  opacity:1;
+  font-weight:500;
   margin:0;
   padding:0 5px;
 }
@@ -345,7 +346,7 @@ body{
   justify-content:space-between;
   align-items:center;
   padding: 3px 0;
-  border-bottom:1px solid rgba(179, 145, 85, 0.2);
+  border-bottom:1px solid rgba(179, 145, 85, 0.3);
   font-size: clamp(10px, 2.6vw, 11px);
 }
 
@@ -361,6 +362,7 @@ body{
 
 .timeline-event{
   color:var(--ink);
+  font-weight:500;
 }
 
 /* BLOQUE 5: BOTÓN MAPS */
@@ -378,11 +380,11 @@ body{
   color:var(--gold);
   text-decoration:none;
   font-size:9.5px;
-  font-weight:500;
+  font-weight:600;
   letter-spacing:.12em;
   text-transform:uppercase;
   transition:all .25s ease;
-  background: rgba(255,255,255,0.85);
+  background: rgba(255,255,255,0.9);
 }
 
 .btn-maps svg{
