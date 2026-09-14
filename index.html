@@ -402,7 +402,7 @@ html, body {
   background: rgba(255, 255, 255, 0.95);
   border: 1px solid rgba(179, 145, 85, 0.35);
   border-radius: 12px;
-  padding: 35px 22px;
+  padding: 25px 22px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -413,17 +413,28 @@ html, body {
   position: relative;
 }
 
+/* Estilos para las ilustraciones del itinerario */
+.itinerary-img {
+  width: 55px;
+  height: 55px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-bottom: 10px;
+  border: 1px solid rgba(179, 145, 85, 0.4);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.06);
+}
+
 .itinerary-time-badge {
   font-family: "Cormorant Garamond", serif;
-  font-size: 26px;
+  font-size: 24px;
   color: var(--gold);
   font-weight: 700;
-  margin-bottom: 8px;
+  margin-bottom: 6px;
   letter-spacing: 0.05em;
 }
 
 .itinerary-title-card {
-  font-size: 13.5px;
+  font-size: 13px;
   text-transform: uppercase;
   letter-spacing: 0.2em;
   color: var(--ink);
@@ -589,26 +600,31 @@ html, body {
           <div class="itinerary-track">
             
             <div class="itinerary-card">
+              <img src="LLEGADA.jpeg" alt="Llegada" class="itinerary-img">
               <div class="itinerary-time-badge">13:00 h</div>
               <div class="itinerary-title-card">Llegada</div>
             </div>
 
             <div class="itinerary-card">
+              <img src="CEREMONIA.jpeg" alt="Ceremonia" class="itinerary-img">
               <div class="itinerary-time-badge">13:30 h</div>
               <div class="itinerary-title-card">Ceremonia</div>
             </div>
 
             <div class="itinerary-card">
+              <img src="COCKTAIL.jpeg" alt="Cocktail" class="itinerary-img">
               <div class="itinerary-time-badge">14:00 h</div>
               <div class="itinerary-title-card">Cocktail</div>
             </div>
 
             <div class="itinerary-card">
+              <img src="COMIDA.jpeg" alt="Comida" class="itinerary-img">
               <div class="itinerary-time-badge">15:00 h</div>
               <div class="itinerary-title-card">Comida</div>
             </div>
 
             <div class="itinerary-card">
+              <img src="BAILE.jpeg" alt="Fiesta y Baile" class="itinerary-img">
               <div class="itinerary-time-badge">16:30 h</div>
               <div class="itinerary-title-card">Fiesta y Baile</div>
             </div>
@@ -633,7 +649,15 @@ html, body {
 
 <script>
 window.addEventListener('load', () => {
-  const imagesToPreload = ['cuerpo_sobre.jpg', 'solapa_sello.png'];
+  const imagesToPreload = [
+    'cuerpo_sobre.jpg', 
+    'solapa_sello.png',
+    'LLEGADA.jpeg',
+    'CEREMONIA.jpeg',
+    'COCKTAIL.jpeg',
+    'COMIDA.jpeg',
+    'BAILE.jpeg'
+  ];
   imagesToPreload.forEach(src => {
     const img = new Image();
     img.src = src;
