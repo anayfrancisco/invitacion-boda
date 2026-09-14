@@ -361,7 +361,7 @@ html, body {
 }
 
 /* ==========================================
-   NUEVO CARRUSEL DE ITINERARIO (1 TARJETA + FLECHAS)
+   CARRUSEL DE ITINERARIO (CON ESPACIO ENTRE TARJETAS)
    ========================================== */
 .itinerary-carousel-wrapper {
   width: 100%;
@@ -433,8 +433,9 @@ html, body {
 }
 
 .itinerary-card {
-  flex: 0 0 100%;
+  flex: 0 0 240px;
   width: 240px;
+  margin-right: 16px; /* Espacio de separación entre tarjetas */
   background: rgba(255, 255, 255, 0.95);
   border: 1px solid rgba(179, 145, 85, 0.35);
   border-radius: 12px;
@@ -447,6 +448,10 @@ html, body {
   scroll-snap-align: center;
   box-shadow: 0 8px 25px rgba(179, 145, 85, 0.1);
   position: relative;
+}
+
+.itinerary-card:last-child {
+  margin-right: 0; /* Quitar margen a la última tarjeta */
 }
 
 .itinerary-img {
@@ -476,7 +481,6 @@ html, body {
   font-weight: 600;
 }
 
-/* Indicadores de puntos (dots) para saber en qué tarjeta estás */
 .carousel-dots {
   display: flex;
   gap: 6px;
@@ -617,7 +621,7 @@ html, body {
         </div>
       </section>
 
-      <!-- BLOQUE 3: ITINERARIO CON FLECHAS Y DESLIZABLE -->
+      <!-- BLOQUE 3: ITINERARIO CON ESPACIO Y FLECHAS -->
       <section class="section-block block-3">
         <div></div>
 
@@ -751,7 +755,7 @@ sections.forEach(section => {
 });
 
 /* ==========================================
-   LÓGICA DEL CARRUSEL DE ITINERARIO (FLECHAS + SWIPE + DOTS)
+   LÓGICA DEL CARRUSEL (INCLUYENDO EL GAP DE 16px)
    ========================================== */
 const track = document.getElementById('itineraryTrack');
 const prevBtn = document.getElementById('prevBtn');
@@ -765,14 +769,13 @@ function updateCarousel(index) {
   if (index >= cards.length) index = 0;
   currentIndex = index;
 
-  // Ancho de la tarjeta + gap (240px + 16px aprox de margen si lo hubiera, aquí se calcula exacto con el ancho del contenedor)
-  const cardWidth = cards[0].offsetWidth + 16; 
+  // Ancho de la tarjeta (240px) + margen derecho (16px)
+  const cardTotalWidth = cards[0].offsetWidth + 16; 
   track.scrollTo({
-    left: currentIndex * cardWidth,
+    left: currentIndex * cardTotalWidth,
     behavior: 'smooth'
   });
 
-  // Actualizar dots
   dots.forEach((dot, i) => {
     dot.classList.toggle('active', i === currentIndex);
   });
@@ -786,10 +789,9 @@ nextBtn.addEventListener('click', () => {
   updateCarousel(currentIndex + 1);
 });
 
-// Sincronizar el índice si el usuario desliza manualmente (swipe) con el dedo
 track.addEventListener('scroll', () => {
-  const cardWidth = cards[0].offsetWidth + 16;
-  const index = Math.round(track.scrollLeft / cardWidth);
+  const cardTotalWidth = cards[0].offsetWidth + 16;
+  const index = Math.round(track.scrollLeft / cardTotalWidth);
   if (index !== currentIndex && index >= 0 && index < cards.length) {
     currentIndex = index;
     dots.forEach((dot, i) => {
