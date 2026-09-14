@@ -72,7 +72,6 @@ html, body {
   object-position: center top;
 }
 
-.bg-inside { z-index: 1; }
 .envelope-body { z-index: 2; }
 
 .envelope-flap {
@@ -383,7 +382,7 @@ html, body {
    BLOQUE 3: ITINERARIO CARRUSEL
    ========================================== */
 .block-3 {
-  justify-content: center; /* Centra todo el contenido verticalmente en el bloque */
+  justify-content: center;
   gap: 20px;
   padding-bottom: calc(30px + env(safe-area-inset-bottom));
 }
@@ -393,7 +392,7 @@ html, body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 10px; /* Menor espacio interno para que el título esté más pegado a las tarjetas */
+  gap: 10px;
 }
 
 .itinerary-track {
@@ -529,7 +528,6 @@ html, body {
 
     <!-- SOBRE CERRADO -->
     <div class="envelope-screen" id="envelopeScreen">
-      <img src="sobre_abierto.jpg" alt="Interior" class="envelope-layer bg-inside">
       <img src="cuerpo_sobre.jpg" alt="Cuerpo" class="envelope-layer envelope-body">
       <img src="solapa_sello.png" alt="Solapa y Sello" class="envelope-layer envelope-flap">
       
@@ -606,47 +604,40 @@ html, body {
 
       <!-- BLOQUE 3: ITINERARIO CARRUSEL HORIZONTAL -->
       <section class="section-block block-3">
-        <div></div> <!-- Espaciador superior invisible para centrar con flexbox -->
+        <div></div>
 
         <div class="itinerary-carousel-wrapper fade-item">
-          <!-- TÍTULO INTEGRADO Y CENTRADO PEGADO A LAS TARJETAS -->
           <div class="block-header" style="margin-bottom: 2px;">
             <span class="section-tag">Planificación</span>
             <h2 class="section-title">Itinerario</h2>
           </div>
 
-          <!-- PISTA DE TARJETAS DESLIZABLES HACIA LA DERECHA -->
           <div class="itinerary-track">
             
-            <!-- Tarjeta 1 -->
             <div class="itinerary-card">
               <span class="itinerary-number">01</span>
               <div class="itinerary-time-badge">13:00 h</div>
               <div class="itinerary-title-card">Llegada</div>
             </div>
 
-            <!-- Tarjeta 2 -->
             <div class="itinerary-card">
               <span class="itinerary-number">02</span>
               <div class="itinerary-time-badge">13:30 h</div>
               <div class="itinerary-title-card">Ceremonia</div>
             </div>
 
-            <!-- Tarjeta 3 -->
             <div class="itinerary-card">
               <span class="itinerary-number">03</span>
               <div class="itinerary-time-badge">14:00 h</div>
               <div class="itinerary-title-card">Cocktail</div>
             </div>
 
-            <!-- Tarjeta 4 -->
             <div class="itinerary-card">
               <span class="itinerary-number">04</span>
               <div class="itinerary-time-badge">15:00 h</div>
               <div class="itinerary-title-card">Comida</div>
             </div>
 
-            <!-- Tarjeta 5 -->
             <div class="itinerary-card">
               <span class="itinerary-number">05</span>
               <div class="itinerary-time-badge">16:30 h</div>
@@ -655,7 +646,6 @@ html, body {
 
           </div>
 
-          <!-- Píldora indicadora -->
           <div class="carousel-hint">
             <span>Desliza para ver más</span>
             <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
@@ -673,6 +663,15 @@ html, body {
 </main>
 
 <script>
+// Precarga de las imágenes del sobre para que abran al instante
+window.addEventListener('load', () => {
+  const imagesToPreload = ['cuerpo_sobre.jpg', 'solapa_sello.png'];
+  imagesToPreload.forEach(src => {
+    const img = new Image();
+    img.src = src;
+  });
+});
+
 const screen = document.getElementById('envelopeScreen');
 const card = document.getElementById('invitationCard');
 const scrollContainer = document.getElementById('scrollContainer');
@@ -693,10 +692,9 @@ function openInvitation(){
 
 screen.addEventListener('click', openInvitation);
 
-// Detección de cambio de sección al hacer scroll para activar las animaciones de aparición
 const observerOptions = {
   root: scrollContainer,
-  threshold: 0.55 // Se activa cuando el bloque está al menos al 55% en pantalla
+  threshold: 0.55
 };
 
 const observer = new IntersectionObserver((entries) => {
@@ -713,7 +711,6 @@ sections.forEach(section => {
   observer.observe(section);
 });
 
-// Cuenta atrás
 const weddingDate = new Date(2026, 9, 31, 13, 0, 0).getTime();
 
 function updateCountdown() {
