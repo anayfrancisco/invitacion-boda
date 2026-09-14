@@ -13,6 +13,7 @@
   --ink: #4a524d;
   --ink-light: #5a635e;
   --bg-image: url('9469116_4152950.jpg'); 
+  --texture-image: url('textura.jpg');
 }
 
 * {
@@ -160,11 +161,13 @@ html, body {
   text-align: center;
 }
 
+/* Capa de fondo combinada: Textura de papel + Tinte blanco translúcido para legibilidad */
 .section-block::before {
   content: "";
   position: absolute;
   inset: 0;
-  background: rgba(255, 255, 255, 0.88);
+  background: var(--texture-image) center/cover no-repeat, rgba(255, 255, 255, 0.86);
+  background-blend-mode: overlay;
   z-index: 1;
 }
 
@@ -338,7 +341,7 @@ html, body {
 }
 
 .time-card {
-  background: rgba(255, 255, 255, 0.7);
+  background: rgba(255, 255, 255, 0.75);
   border: 1px solid rgba(179, 145, 85, 0.3);
   border-radius: 8px;
   padding: 16px 8px;
@@ -402,7 +405,7 @@ html, body {
 .itinerary-card {
   flex: 0 0 82%;
   max-width: 270px;
-  background: rgba(255, 255, 255, 0.88);
+  background: rgba(255, 255, 255, 0.9);
   border: 1px solid rgba(179, 145, 85, 0.35);
   border-radius: 12px;
   padding: 35px 22px;
