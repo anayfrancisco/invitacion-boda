@@ -161,7 +161,7 @@ html, body {
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  padding: calc(30px + env(safe-area-inset-top)) 24px calc(20px + env(safe-area-inset-bottom));
+  padding: calc(25px + env(safe-area-inset-top)) 24px calc(25px + env(safe-area-inset-bottom));
   text-align: center;
 }
 
@@ -215,11 +215,10 @@ html, body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 3px;
+  gap: 4px;
   font-weight: 600;
   animation: bounce 2s infinite;
   opacity: 0.8;
-  padding-bottom: 5px; /* Más cerca del borde inferior del bloque */
 }
 
 .scroll-hint svg {
@@ -236,17 +235,19 @@ html, body {
   60% { transform: translateY(3px); }
 }
 
+/* MODIFICACIÓN CLAVE AQUÍ: Centrado vertical restaurado y separación equilibrada */
 .block-1 {
-  justify-content: flex-start; /* Alinea los elementos desde arriba hacia abajo */
-  gap: 20px;
+  justify-content: center; 
 }
 
 .block-1 .center-content {
+  flex: 1;
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
-  gap: 12px;
-  margin-top: 10px;
+  gap: 14px;
+  margin: auto 0; /* Asegura que ocupe el centro exacto pero equilibrado */
 }
 
 .names-wrapper {
@@ -258,7 +259,7 @@ html, body {
 
 .name-main {
   font-family: "Cinzel", serif;
-  font-size: clamp(32px, 8.5vw, 42px);
+  font-size: clamp(34px, 9vw, 44px);
   color: var(--gold);
   letter-spacing: 0.15em;
   font-weight: 500;
@@ -266,15 +267,15 @@ html, body {
 
 .ampersand {
   font-family: "Bodoni Moda", serif;
-  font-size: clamp(22px, 5.5vw, 28px);
+  font-size: clamp(24px, 6vw, 30px);
   font-style: italic;
   color: var(--gold);
-  margin: 2px 0;
+  margin: 4px 0;
 }
 
 .intro-title-block {
   font-family: "Cormorant Garamond", serif;
-  font-size: clamp(14px, 4vw, 17px);
+  font-size: clamp(15px, 4.2vw, 18px);
   color: var(--gold);
   letter-spacing: 0.04em;
   font-weight: 600;
@@ -284,11 +285,12 @@ html, body {
 }
 
 .main-message {
-  font-size: clamp(13px, 3.4vw, 15px);
-  line-height: 1.5;
+  font-size: clamp(13.5px, 3.6vw, 15.5px);
+  line-height: 1.55;
   color: var(--ink);
   font-weight: 500;
   max-width: 320px;
+  margin-bottom: 24px; /* Espacio moderado y elegante antes de la flecha de cuenta atrás */
 }
 
 .block-2 {
