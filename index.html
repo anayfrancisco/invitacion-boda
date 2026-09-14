@@ -152,6 +152,7 @@ html, body {
   scroll-snap-align: start;
   scroll-snap-stop: always;
   position: relative;
+  /* Imagen de fondo principal visible de base */
   background: #ffffff var(--bg-image) center/cover no-repeat;
   display: flex;
   flex-direction: column;
@@ -161,19 +162,31 @@ html, body {
   text-align: center;
 }
 
-/* Capa de fondo combinada: Textura de papel + Tinte blanco translúcido para legibilidad */
+/* Capa combinada: Textura de papel semi-transparente sobre la imagen de fondo principal */
 .section-block::before {
   content: "";
   position: absolute;
   inset: 0;
-  background: var(--texture-image) center/cover no-repeat, rgba(255, 255, 255, 0.86);
-  background-blend-mode: overlay;
+  background: var(--texture-image) center/cover no-repeat;
+  opacity: 0.25; /* Controla qué tanto se nota la textura (más bajo = más se ve el fondo principal) */
+  mix-blend-mode: multiply; /* Fusiona la textura sutilmente con la imagen de fondo */
   z-index: 1;
+  pointer-events: none;
+}
+
+/* Capa adicional muy suave para asegurar que los textos se lean bien */
+.section-block::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.45); 
+  z-index: 2;
+  pointer-events: none;
 }
 
 .section-block > * {
   position: relative;
-  z-index: 2;
+  z-index: 3;
   width: 100%;
 }
 
@@ -341,7 +354,7 @@ html, body {
 }
 
 .time-card {
-  background: rgba(255, 255, 255, 0.75);
+  background: rgba(255, 255, 255, 0.85);
   border: 1px solid rgba(179, 145, 85, 0.3);
   border-radius: 8px;
   padding: 16px 8px;
@@ -405,7 +418,7 @@ html, body {
 .itinerary-card {
   flex: 0 0 82%;
   max-width: 270px;
-  background: rgba(255, 255, 255, 0.9);
+  background: rgba(255, 255, 255, 0.95);
   border: 1px solid rgba(179, 145, 85, 0.35);
   border-radius: 12px;
   padding: 35px 22px;
