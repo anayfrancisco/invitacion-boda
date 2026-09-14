@@ -360,6 +360,9 @@ html, body {
   padding-bottom: calc(30px + env(safe-area-inset-bottom));
 }
 
+/* ==========================================
+   NUEVO CARRUSEL DE ITINERARIO (1 TARJETA + FLECHAS)
+   ========================================== */
 .itinerary-carousel-wrapper {
   width: 100%;
   display: flex;
@@ -368,17 +371,61 @@ html, body {
   gap: 10px;
 }
 
-.itinerary-track {
+.carousel-container-flex {
   display: flex;
-  gap: 16px;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
   width: 100%;
   max-width: 340px;
+  position: relative;
+}
+
+.carousel-arrow {
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(179, 145, 85, 0.4);
+  color: var(--gold);
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+  transition: all 0.2s ease;
+  z-index: 5;
+  flex-shrink: 0;
+}
+
+.carousel-arrow:hover {
+  background: var(--gold);
+  color: #ffffff;
+  border-color: var(--gold);
+}
+
+.carousel-arrow svg {
+  width: 18px;
+  height: 18px;
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 2.2;
+}
+
+.itinerary-track {
+  display: flex;
+  width: 240px;
   overflow-x: auto;
   scroll-snap-type: x mandatory;
   scroll-behavior: smooth;
-  padding: 10px 4px 20px 4px;
+  padding: 10px 0;
   -webkit-overflow-scrolling: touch;
-  scrollbar-width: none; 
+  scrollbar-width: none;
+  cursor: grab;
+}
+
+.itinerary-track:active {
+  cursor: grabbing;
 }
 
 .itinerary-track::-webkit-scrollbar {
@@ -386,12 +433,12 @@ html, body {
 }
 
 .itinerary-card {
-  flex: 0 0 82%;
-  max-width: 270px;
+  flex: 0 0 100%;
+  width: 240px;
   background: rgba(255, 255, 255, 0.95);
   border: 1px solid rgba(179, 145, 85, 0.35);
   border-radius: 12px;
-  padding: 22px;
+  padding: 22px 18px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -402,7 +449,6 @@ html, body {
   position: relative;
 }
 
-/* Ilustraciones más grandes y en formato cuadrado */
 .itinerary-img {
   width: 110px;
   height: 110px;
@@ -430,30 +476,25 @@ html, body {
   font-weight: 600;
 }
 
-.carousel-hint {
+/* Indicadores de puntos (dots) para saber en qué tarjeta estás */
+.carousel-dots {
   display: flex;
-  align-items: center;
   gap: 6px;
-  font-size: 10px;
-  text-transform: uppercase;
-  letter-spacing: 0.2em;
-  color: var(--gold);
-  font-weight: 600;
-  opacity: 0.8;
+  margin-top: 2px;
 }
 
-.carousel-hint svg {
-  width: 12px;
-  height: 12px;
-  stroke: currentColor;
-  fill: none;
-  stroke-width: 2;
-  animation: slideArrows 1.5s infinite ease-in-out;
+.dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: rgba(179, 145, 85, 0.3);
+  transition: all 0.3s ease;
 }
 
-@keyframes slideArrows {
-  0%, 100% { transform: translateX(0); }
-  50% { transform: translateX(4px); }
+.dot.active {
+  background: var(--gold);
+  width: 16px;
+  border-radius: 3px;
 }
 
 .btn-location {
@@ -576,7 +617,7 @@ html, body {
         </div>
       </section>
 
-      <!-- BLOQUE 3: ITINERARIO CARRUSEL HORIZONTAL -->
+      <!-- BLOQUE 3: ITINERARIO CON FLECHAS Y DESLIZABLE -->
       <section class="section-block block-3">
         <div></div>
 
@@ -586,43 +627,60 @@ html, body {
             <h2 class="section-title">Itinerario</h2>
           </div>
 
-          <div class="itinerary-track">
-            
-            <div class="itinerary-card">
-              <img src="LLEGADA.jpeg" alt="Llegada" class="itinerary-img">
-              <div class="itinerary-time-badge">13:00 h</div>
-              <div class="itinerary-title-card">Llegada</div>
+          <div class="carousel-container-flex">
+            <!-- Flecha izquierda -->
+            <button class="carousel-arrow" id="prevBtn" aria-label="Anterior">
+              <svg viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg>
+            </button>
+
+            <!-- Pista deslizable -->
+            <div class="itinerary-track" id="itineraryTrack">
+              
+              <div class="itinerary-card">
+                <img src="LLEGADA.jpeg" alt="Llegada" class="itinerary-img">
+                <div class="itinerary-time-badge">13:00 h</div>
+                <div class="itinerary-title-card">Llegada</div>
+              </div>
+
+              <div class="itinerary-card">
+                <img src="CEREMONIA.jpeg" alt="Ceremonia" class="itinerary-img">
+                <div class="itinerary-time-badge">13:30 h</div>
+                <div class="itinerary-title-card">Ceremonia</div>
+              </div>
+
+              <div class="itinerary-card">
+                <img src="COCKTAIL.jpeg" alt="Cocktail" class="itinerary-img">
+                <div class="itinerary-time-badge">14:00 h</div>
+                <div class="itinerary-title-card">Cocktail</div>
+              </div>
+
+              <div class="itinerary-card">
+                <img src="COMIDA.jpeg" alt="Comida" class="itinerary-img">
+                <div class="itinerary-time-badge">15:00 h</div>
+                <div class="itinerary-title-card">Comida</div>
+              </div>
+
+              <div class="itinerary-card">
+                <img src="BAILE.jpeg" alt="Fiesta y Baile" class="itinerary-img">
+                <div class="itinerary-time-badge">16:30 h</div>
+                <div class="itinerary-title-card">Fiesta y Baile</div>
+              </div>
+
             </div>
 
-            <div class="itinerary-card">
-              <img src="CEREMONIA.jpeg" alt="Ceremonia" class="itinerary-img">
-              <div class="itinerary-time-badge">13:30 h</div>
-              <div class="itinerary-title-card">Ceremonia</div>
-            </div>
-
-            <div class="itinerary-card">
-              <img src="COCKTAIL.jpeg" alt="Cocktail" class="itinerary-img">
-              <div class="itinerary-time-badge">14:00 h</div>
-              <div class="itinerary-title-card">Cocktail</div>
-            </div>
-
-            <div class="itinerary-card">
-              <img src="COMIDA.jpeg" alt="Comida" class="itinerary-img">
-              <div class="itinerary-time-badge">15:00 h</div>
-              <div class="itinerary-title-card">Comida</div>
-            </div>
-
-            <div class="itinerary-card">
-              <img src="BAILE.jpeg" alt="Fiesta y Baile" class="itinerary-img">
-              <div class="itinerary-time-badge">16:30 h</div>
-              <div class="itinerary-title-card">Fiesta y Baile</div>
-            </div>
-
+            <!-- Flecha derecha -->
+            <button class="carousel-arrow" id="nextBtn" aria-label="Siguiente">
+              <svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg>
+            </button>
           </div>
 
-          <div class="carousel-hint">
-            <span>Desliza para ver más</span>
-            <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          <!-- Puntos indicadores (Dots) -->
+          <div class="carousel-dots" id="carouselDots">
+            <span class="dot active"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
           </div>
         </div>
 
@@ -690,6 +748,54 @@ const observer = new IntersectionObserver((entries) => {
 
 sections.forEach(section => {
   observer.observe(section);
+});
+
+/* ==========================================
+   LÓGICA DEL CARRUSEL DE ITINERARIO (FLECHAS + SWIPE + DOTS)
+   ========================================== */
+const track = document.getElementById('itineraryTrack');
+const prevBtn = document.getElementById('prevBtn');
+const nextBtn = document.getElementById('nextBtn');
+const dots = document.querySelectorAll('.carousel-dots .dot');
+const cards = track.querySelectorAll('.itinerary-card');
+let currentIndex = 0;
+
+function updateCarousel(index) {
+  if (index < 0) index = cards.length - 1;
+  if (index >= cards.length) index = 0;
+  currentIndex = index;
+
+  // Ancho de la tarjeta + gap (240px + 16px aprox de margen si lo hubiera, aquí se calcula exacto con el ancho del contenedor)
+  const cardWidth = cards[0].offsetWidth + 16; 
+  track.scrollTo({
+    left: currentIndex * cardWidth,
+    behavior: 'smooth'
+  });
+
+  // Actualizar dots
+  dots.forEach((dot, i) => {
+    dot.classList.toggle('active', i === currentIndex);
+  });
+}
+
+prevBtn.addEventListener('click', () => {
+  updateCarousel(currentIndex - 1);
+});
+
+nextBtn.addEventListener('click', () => {
+  updateCarousel(currentIndex + 1);
+});
+
+// Sincronizar el índice si el usuario desliza manualmente (swipe) con el dedo
+track.addEventListener('scroll', () => {
+  const cardWidth = cards[0].offsetWidth + 16;
+  const index = Math.round(track.scrollLeft / cardWidth);
+  if (index !== currentIndex && index >= 0 && index < cards.length) {
+    currentIndex = index;
+    dots.forEach((dot, i) => {
+      dot.classList.toggle('active', i === currentIndex);
+    });
+  }
 });
 
 const weddingDate = new Date(2026, 9, 31, 13, 0, 0).getTime();
