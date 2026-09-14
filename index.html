@@ -89,7 +89,6 @@ html, body {
   z-index: 10;
   pointer-events: none;
   animation: pulse 2.2s infinite ease-in-out;
-  /* Transición rápida para que desaparezca al instante */
   transition: opacity 0.1s ease;
 }
 
@@ -118,7 +117,6 @@ html, body {
   transform: translateY(-12%);
 }
 
-/* Oculta la frase tan pronto se añade la clase 'opening' */
 .envelope-screen.opening .tap-instruction-container {
   opacity: 0 !important;
 }
@@ -415,16 +413,6 @@ html, body {
   position: relative;
 }
 
-.itinerary-number {
-  position: absolute;
-  top: 14px;
-  right: 18px;
-  font-family: "Cormorant Garamond", serif;
-  font-size: 14px;
-  color: rgba(179, 145, 85, 0.5);
-  letter-spacing: 0.1em;
-}
-
 .itinerary-time-badge {
   font-family: "Cormorant Garamond", serif;
   font-size: 26px;
@@ -601,31 +589,26 @@ html, body {
           <div class="itinerary-track">
             
             <div class="itinerary-card">
-              <span class="itinerary-number">01</span>
               <div class="itinerary-time-badge">13:00 h</div>
               <div class="itinerary-title-card">Llegada</div>
             </div>
 
             <div class="itinerary-card">
-              <span class="itinerary-number">02</span>
               <div class="itinerary-time-badge">13:30 h</div>
               <div class="itinerary-title-card">Ceremonia</div>
             </div>
 
             <div class="itinerary-card">
-              <span class="itinerary-number">03</span>
               <div class="itinerary-time-badge">14:00 h</div>
               <div class="itinerary-title-card">Cocktail</div>
             </div>
 
             <div class="itinerary-card">
-              <span class="itinerary-number">04</span>
               <div class="itinerary-time-badge">15:00 h</div>
               <div class="itinerary-title-card">Comida</div>
             </div>
 
             <div class="itinerary-card">
-              <span class="itinerary-number">05</span>
               <div class="itinerary-time-badge">16:30 h</div>
               <div class="itinerary-title-card">Fiesta y Baile</div>
             </div>
@@ -667,7 +650,6 @@ function openInvitation(){
   if(opened) return;
   opened = true;
   
-  // Añade la clase 'opening' inmediatamente al tocar, lo que desvanece la frase al instante
   screen.classList.add('opening');
   
   setTimeout(() => {
