@@ -51,7 +51,7 @@ html, body {
 }
 
 /* ==========================================
-   SOBRE INTERACTIVO (ANIMACIÓN NATURAL)
+   SOBRE INTERACTIVO (DESPLAZAMIENTO HACIA ARRIBA)
    ========================================== */
 .envelope-screen {
   position: absolute;
@@ -59,13 +59,9 @@ html, body {
   z-index: 100;
   cursor: pointer;
   overflow: hidden;
-  perspective: 1200px;
   background: #1a1a1a;
-  /* Transición fluida de desvanecimiento y escala general */
-  transition: opacity 0.7s cubic-bezier(0.4, 0, 0.2, 1) 0.5s, 
-              visibility 0.7s cubic-bezier(0.4, 0, 0.2, 1) 0.5s,
-              transform 0.7s cubic-bezier(0.4, 0, 0.2, 1) 0.5s;
-  transform-origin: center center;
+  /* Transición de desvanecimiento del sobre */
+  transition: opacity 0.8s ease 0.25s, visibility 0.8s ease 0.25s;
 }
 
 .envelope-layer {
@@ -75,7 +71,6 @@ html, body {
   height: 100%;
   object-fit: cover;
   object-position: center top;
-  backface-visibility: hidden;
 }
 
 .bg-inside { z-index: 1; }
@@ -83,9 +78,8 @@ html, body {
 
 .envelope-flap {
   z-index: 3;
-  transform-origin: top center;
-  /* Curva de movimiento tipo resorte físico */
-  transition: transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+  /* Transición suave para el desplazamiento vertical */
+  transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
 .tap-instruction {
@@ -102,7 +96,7 @@ html, body {
   text-shadow: 0 2px 6px rgba(0,0,0,0.6);
   pointer-events: none;
   animation: pulse 2.2s infinite ease-in-out;
-  transition: opacity 0.3s ease;
+  transition: opacity 0.2s ease;
 }
 
 @keyframes pulse {
@@ -110,25 +104,24 @@ html, body {
   50% { opacity: 0.3; }
 }
 
-/* PASO 1: La solapa gira de forma natural */
+/* PASO 1: La solapa se desplaza un poco hacia arriba */
 .envelope-screen.opening .envelope-flap {
-  transform: rotateX(180deg);
+  transform: translateY(-12%); /* Se desliza un 12% hacia arriba */
 }
 
 .envelope-screen.opening .tap-instruction {
   opacity: 0;
 }
 
-/* PASO 2: El sobre completo se amplia ligeramente y desvanece suavemente */
+/* PASO 2: Fundido hacia la información */
 .envelope-screen.opened {
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
-  transform: scale(1.04);
 }
 
 /* ==========================================
-   TARJETA INTERNA CON EFECTO DE ENTRADA
+   TARJETA INTERNA
    ========================================== */
 .content {
   width: 100%;
@@ -144,16 +137,12 @@ html, body {
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
   
-  /* Animación suave al aparecer */
   opacity: 0;
-  transform: translateY(12px);
-  transition: opacity 0.8s cubic-bezier(0.25, 1, 0.5, 1) 0.4s, 
-              transform 0.8s cubic-bezier(0.25, 1, 0.5, 1) 0.4s;
+  transition: opacity 0.8s ease 0.25s;
 }
 
 .invitation.show-content .content {
   opacity: 1;
-  transform: translateY(0);
 }
 
 .content::before {
@@ -283,14 +272,14 @@ function openInvitation(){
   if(opened) return;
   opened = true;
   
-  // 1. Inicia rotación de la solapa
+  // 1. Desplaza la solapa hacia arriba
   screen.classList.add('opening');
   
-  // 2. Transición del sobre y entrada del contenido
+  // 2. Hace el fundido suave a la tarjeta
   setTimeout(() => {
     screen.classList.add('opened');
     card.classList.add('show-content');
-  }, 600); 
+  }, 200); 
 }
 
 screen.addEventListener('click', openInvitation);
