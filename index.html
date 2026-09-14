@@ -3,95 +3,226 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title>Sobre</title>
+<title>Ana & Francis — Invitación</title>
 <style>
+  @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Montserrat:wght@300;400;500;600&display=swap');
+
   * {
     box-sizing: border-box;
-  }
-  
-  html, body {
     margin: 0;
     padding: 0;
+  }
+
+  html, body {
     width: 100%;
     height: 100%;
-    background-color: #1a1a1a;
+    background-color: #e3e8e5;
+    font-family: 'Montserrat', sans-serif;
     display: flex;
     justify-content: center;
     align-items: center;
     overflow: hidden;
   }
 
-  .envelope-container {
-    width: min(100%, 480px);
+  /* ESCENARIO DEL SOBRE CON PERSPECTIVA 3D */
+  .wedding-wrapper {
+    width: min(100%, 420px);
     height: 100svh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     position: relative;
-    overflow: hidden;
+    perspective: 1000px;
+  }
+
+  .envelope-box {
+    width: 90%;
+    max-width: 380px;
+    height: 260px;
+    position: relative;
+    background: #d4ded8; /* Color base interior del sobre */
+    border-radius: 4px;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.15);
     cursor: pointer;
   }
 
-  /* Capa de fondo: Foto del sobre abierto */
-  .envelope-open {
+  /* FORRO INTERIOR DEL SOBRE (Forro floral/limones) */
+  .envelope-lining {
+    position: absolute;
+    inset: 5px;
+    background: #ffffff url('sobre_abierto.jpg') center/cover no-repeat;
+    border-radius: 2px;
+  }
+
+  /* TARJETA INTERNA (LA INVITACIÓN) */
+  .card-inside {
+    position: absolute;
+    width: 92%;
+    height: 92%;
+    left: 4%;
+    top: 4%;
+    background: #ffffff url('9469116_4152950.jpg') center/cover no-repeat;
+    border-radius: 4px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    z-index: 2;
+    transition: transform 0.9s cubic-bezier(0.4, 0, 0.2, 1) 0.5s, z-index 0s 0.8s;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    text-align: center;
+  }
+
+  .card-inside::before {
+    content: "";
     position: absolute;
     inset: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center top;
+    background: rgba(255, 255, 255, 0.85);
+    border-radius: 4px;
     z-index: 1;
   }
 
-  /* Capa frontal: Foto del sobre cerrado que se desliza/pliega hacia arriba */
-  .envelope-closed {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center top;
+  .card-content {
+    position: relative;
     z-index: 2;
-    /* Punto de origen arriba para simular la elevación */
-    transform-origin: top center;
-    transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.5s ease 0.2s;
   }
 
-  /* Texto indicativo */
-  .tap-instruction {
-    position: absolute;
-    bottom: 30px;
-    left: 0;
-    right: 0;
-    text-align: center;
-    color: #ffffff;
+  .card-names {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 28px;
+    color: #b39155;
+    letter-spacing: 0.08em;
+    font-weight: 600;
+  }
+
+  .card-date {
     font-size: 11px;
-    letter-spacing: 0.25em;
+    letter-spacing: 0.2em;
+    color: #4a524d;
+    margin-top: 8px;
     text-transform: uppercase;
+  }
+
+  /* PARTES DE DELANTE DEL SOBRE (BOLSILLO INFERIOR) */
+  .envelope-pocket {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('sobre_cerrado.jpg') center/cover no-repeat;
+    clip-path: polygon(0 40%, 50% 68%, 100% 40%, 100% 100%, 0 100%);
     z-index: 3;
-    text-shadow: 0 2px 6px rgba(0,0,0,0.6);
-    pointer-events: none;
+    border-radius: 0 0 4px 4px;
+  }
+
+  /* SOLAPA SUPERIOR QUE SE DOBLEGA HACIA ARRIBA */
+  .envelope-flap {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('sobre_cerrado.jpg') center/cover no-repeat;
+    clip-path: polygon(0 0, 100% 0, 50% 68%);
+    transform-origin: top center;
+    transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 4;
+  }
+
+  /* SELLO / MONOGRAMA AL CENTRO */
+  .seal {
+    position: absolute;
+    top: 55%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 44px;
+    height: 44px;
+    background: #b39155;
+    border-radius: 50%;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.25);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #ffffff;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 14px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    z-index: 5;
     transition: opacity 0.3s ease;
   }
 
-  /* Al hacer clic: La imagen cerrada se encoge hacia arriba revelando el sobre abierto */
-  .envelope-container.is-open .envelope-closed {
-    transform: scaleY(0);
-    opacity: 0;
+  /* TEXTO INSTRUCTIVO */
+  .tap-instruction {
+    position: absolute;
+    bottom: -45px;
+    width: 100%;
+    text-align: center;
+    color: #6b7770;
+    font-size: 11px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    animation: pulse 2s infinite;
   }
 
-  .envelope-container.is-open .tap-instruction {
+  @keyframes pulse {
+    0%, 100% { opacity: 0.9; }
+    50% { opacity: 0.35; }
+  }
+
+  /* ==========================================
+     ESTADO ABIERTO (ANIMACIÓN TRAS CLIC)
+     ========================================== */
+
+  /* 1. La solapa se abre hacia arriba */
+  .envelope-box.is-open .envelope-flap {
+    transform: rotateX(180deg);
+    z-index: 1; /* Pasa atrás de la tarjeta al abrirse */
+  }
+
+  /* 2. El sello desaparece */
+  .envelope-box.is-open .seal,
+  .envelope-box.is-open .tap-instruction {
     opacity: 0;
+    pointer-events: none;
+  }
+
+  /* 3. La tarjeta sale del sobre hacia arriba y se coloca sobre todo */
+  .envelope-box.is-open .card-inside {
+    transform: translateY(-130px) scale(1.08);
+    z-index: 10;
   }
 </style>
 </head>
 <body>
 
-  <div class="envelope-container" id="envelope">
-    <!-- Capa de fondo -->
-    <img src="sobre_abierto.jpg" alt="Sobre Abierto" class="envelope-open">
-    
-    <!-- Capa superior que se levanta/repliega -->
-    <img src="sobre_cerrado.jpg" alt="Sobre Cerrado" class="envelope-closed">
+  <div class="wedding-wrapper">
+    <div class="envelope-box" id="envelope">
+      
+      <!-- Fondo interior estampado -->
+      <div class="envelope-lining"></div>
 
-    <div class="tap-instruction">Toca para abrir</div>
+      <!-- Tarjeta interna que sale deslizándose -->
+      <div class="card-inside">
+        <div class="card-content">
+          <div class="card-names">Ana & Francis</div>
+          <div class="card-date">31 / 10 / 2026</div>
+        </div>
+      </div>
+
+      <!-- Bolsillo inferior del sobre -->
+      <div class="envelope-pocket"></div>
+
+      <!-- Solapa superior plegable -->
+      <div class="envelope-flap"></div>
+
+      <!-- Sello central de lacre -->
+      <div class="seal">A&F</div>
+
+      <div class="tap-instruction">Toca para abrir</div>
+    </div>
   </div>
 
   <script>
