@@ -236,7 +236,7 @@ html, body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 18px;
+  gap: 14px; /* Reducido ligeramente para acercar los elementos */
 }
 
 .names-wrapper {
@@ -435,7 +435,7 @@ html, body {
 .itinerary-card {
   flex: 0 0 240px;
   width: 240px;
-  margin-right: 16px; /* Espacio de separación entre tarjetas */
+  margin-right: 16px;
   background: rgba(255, 255, 255, 0.95);
   border: 1px solid rgba(179, 145, 85, 0.35);
   border-radius: 12px;
@@ -451,7 +451,7 @@ html, body {
 }
 
 .itinerary-card:last-child {
-  margin-right: 0; /* Quitar margen a la última tarjeta */
+  margin-right: 0;
 }
 
 .itinerary-img {
@@ -583,7 +583,7 @@ html, body {
         </div>
 
         <div class="scroll-hint fade-item">
-          <span>Desliza</span>
+          <span>Itinerario</span>
           <svg viewBox="0 0 24 24"><path d="M12 5v14M19 12l-7 7-7-7"/></svg>
         </div>
       </section>
@@ -769,7 +769,6 @@ function updateCarousel(index) {
   if (index >= cards.length) index = 0;
   currentIndex = index;
 
-  // Ancho de la tarjeta (240px) + margen derecho (16px)
   const cardTotalWidth = cards[0].offsetWidth + 16; 
   track.scrollTo({
     left: currentIndex * cardTotalWidth,
