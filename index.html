@@ -30,11 +30,12 @@ html, body {
   color: var(--ink);
   -webkit-font-smoothing: antialiased;
   overflow: hidden;
+  position: fixed; /* Evita rebotes raros del navegador móvil */
 }
 
 .page {
   width: 100%;
-  height: 100vh;
+  height: 100%;
   height: 100svh;
   display: flex;
   justify-content: center;
@@ -45,7 +46,7 @@ html, body {
 .invitation {
   width: 100%;
   max-width: 440px;
-  height: 100vh;
+  height: 100%;
   height: 100svh;
   position: relative;
   background: #ffffff;
@@ -135,7 +136,7 @@ html, body {
    ========================================== */
 .scroll-container {
   width: 100%;
-  height: 100vh;
+  height: 100%;
   height: 100svh;
   overflow-y: scroll;
   scroll-snap-type: y mandatory;
@@ -151,7 +152,7 @@ html, body {
 
 .section-block {
   width: 100%;
-  height: 100vh;
+  height: 100%;
   height: 100svh;
   scroll-snap-align: start;
   scroll-snap-stop: always;
@@ -165,6 +166,7 @@ html, body {
   text-align: center;
 }
 
+/* Textura unificada y estática para evitar cortes o parpadeos */
 .section-block::before {
   content: "";
   position: absolute;
@@ -219,6 +221,7 @@ html, body {
   font-weight: 600;
   animation: bounce 2s infinite;
   opacity: 0.8;
+  margin-top: auto; /* Fuerza que se pegue al flujo inferior sin dejar espacio vacío */
 }
 
 .scroll-hint svg {
@@ -235,13 +238,18 @@ html, body {
   60% { transform: translateY(3px); }
 }
 
+.block-1 {
+  justify-content: space-between;
+}
+
 .block-1 .center-content {
   flex: 1;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 14px;
+  gap: 12px;
+  margin: auto 0;
 }
 
 .names-wrapper {
@@ -284,12 +292,10 @@ html, body {
   color: var(--ink);
   font-weight: 500;
   max-width: 320px;
-  margin-bottom: 20px; /* Acerca el texto al indicador inferior */
 }
 
 .block-2 {
-  justify-content: center;
-  gap: 25px;
+  justify-content: space-between;
 }
 
 .block-header {
@@ -329,7 +335,8 @@ html, body {
   grid-template-columns: repeat(4, 1fr);
   gap: 12px;
   max-width: 340px;
-  margin: 0 auto;
+  margin: auto auto;
+  width: 100%;
 }
 
 .time-card {
@@ -361,9 +368,8 @@ html, body {
 }
 
 .block-3 {
-  justify-content: center;
-  gap: 20px;
-  padding-bottom: calc(30px + env(safe-area-inset-bottom));
+  justify-content: space-between;
+  padding-bottom: calc(25px + env(safe-area-inset-bottom));
 }
 
 /* ==========================================
@@ -375,6 +381,7 @@ html, body {
   flex-direction: column;
   align-items: center;
   gap: 10px;
+  margin: auto 0;
 }
 
 .carousel-container-flex {
@@ -525,6 +532,7 @@ html, body {
   text-transform: uppercase;
   box-shadow: 0 6px 20px rgba(179, 145, 85, 0.35);
   transition: transform 0.2s ease, background 0.2s ease;
+  margin: 0 auto;
 }
 
 .btn-location svg {
@@ -535,6 +543,10 @@ html, body {
 }
 
 @media (min-width: 481px) {
+  html, body {
+    position: static;
+    overflow: auto;
+  }
   .invitation {
     height: 90vh;
     max-height: 780px;
@@ -583,7 +595,7 @@ html, body {
           </div>
           <div class="intro-title-block fade-item">Como ya os adelantamos con gran ilusión, ¡Nos casamos!</div>
           <p class="main-message fade-item">
-            El camino es más bonito cuando se camina en buena compañía. Por eso, os invitamos a celebrar nuestro enlace matrimonial. Vuestra presencia es nuestro mejor regalo.
+            El camino es más bonito cuando se camina en buena compañía. Por eso, os invitamos a celebrar nuestro enlace matrimonial. Vuestra presencia is nuestro mejor regalo.
           </p>
         </div>
 
