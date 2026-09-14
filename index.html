@@ -152,7 +152,6 @@ html, body {
   scroll-snap-align: start;
   scroll-snap-stop: always;
   position: relative;
-  /* Imagen de fondo principal visible de base */
   background: #ffffff var(--bg-image) center/cover no-repeat;
   display: flex;
   flex-direction: column;
@@ -162,19 +161,18 @@ html, body {
   text-align: center;
 }
 
-/* Capa combinada: Textura de papel semi-transparente sobre la imagen de fondo principal */
+/* Capa combinada: Textura de papel + Fondo principal */
 .section-block::before {
   content: "";
   position: absolute;
   inset: 0;
   background: var(--texture-image) center/cover no-repeat;
-  opacity: 0.25; /* Controla qué tanto se nota la textura (más bajo = más se ve el fondo principal) */
-  mix-blend-mode: multiply; /* Fusiona la textura sutilmente con la imagen de fondo */
+  opacity: 0.25;
+  mix-blend-mode: multiply;
   z-index: 1;
   pointer-events: none;
 }
 
-/* Capa adicional muy suave para asegurar que los textos se lean bien */
 .section-block::after {
   content: "";
   position: absolute;
@@ -385,8 +383,9 @@ html, body {
    BLOQUE 3: ITINERARIO CARRUSEL
    ========================================== */
 .block-3 {
-  justify-content: space-between;
-  padding-bottom: calc(35px + env(safe-area-inset-bottom));
+  justify-content: center; /* Centra todo el contenido verticalmente en el bloque */
+  gap: 20px;
+  padding-bottom: calc(30px + env(safe-area-inset-bottom));
 }
 
 .itinerary-carousel-wrapper {
@@ -394,8 +393,7 @@ html, body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 12px;
-  margin: auto 0;
+  gap: 10px; /* Menor espacio interno para que el título esté más pegado a las tarjetas */
 }
 
 .itinerary-track {
@@ -608,12 +606,15 @@ html, body {
 
       <!-- BLOQUE 3: ITINERARIO CARRUSEL HORIZONTAL -->
       <section class="section-block block-3">
-        <div class="block-header fade-item" style="margin-top: 4px;">
-          <span class="section-tag">Planificación</span>
-          <h2 class="section-title">Itinerario</h2>
-        </div>
+        <div></div> <!-- Espaciador superior invisible para centrar con flexbox -->
 
         <div class="itinerary-carousel-wrapper fade-item">
+          <!-- TÍTULO INTEGRADO Y CENTRADO PEGADO A LAS TARJETAS -->
+          <div class="block-header" style="margin-bottom: 2px;">
+            <span class="section-tag">Planificación</span>
+            <h2 class="section-title">Itinerario</h2>
+          </div>
+
           <!-- PISTA DE TARJETAS DESLIZABLES HACIA LA DERECHA -->
           <div class="itinerary-track">
             
