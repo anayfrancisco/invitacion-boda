@@ -3,293 +3,48 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title>Ana & Francis — 31 / 10 / 2026</title>
+<title>Sobre Cerrado</title>
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,wght@1,300;1,400&family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap');
+  * {
+    box-sizing: border-box;
+  }
+  
+  html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #1a1a1a;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+  }
 
-:root{
-  --gold:#b39155;
-  --ink:#4a524d;
-  --bg-image: url('9469116_4152950.jpg'); 
-}
+  .envelope-container {
+    width: min(100%, 480px);
+    height: 100svh;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 
-*{box-sizing:border-box}
-html,body{margin:0;height:100%;font-family:Montserrat,sans-serif;color:var(--ink);-webkit-font-smoothing:antialiased}
-
-body{
-  background:#e3e8e5;
-  overflow:hidden;
-}
-
-.page{
-  height:100svh;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  position:relative;
-}
-
-.invitation{
-  width:min(100%, 480px);
-  height:100svh;
-  position:relative;
-  background:#ffffff;
-  box-shadow:0 20px 50px rgba(45,60,53,.12);
-  overflow:hidden;
-  display:flex;
-  flex-direction:column;
-}
-
-/* ==========================================
-   SOBRE CON IMÁGENES REALES
-   ========================================== */
-.envelope-screen{
-  position:absolute;
-  inset:0;
-  z-index:100;
-  cursor:pointer;
-  overflow:hidden;
-  background:#9db1a7;
-  transition: opacity 0.8s ease 0.4s, visibility 0.8s ease 0.4s;
-}
-
-/* Capa 1: Sobre Abierto (Fondo) */
-.envelope-bg-open {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center top;
-  z-index: 1;
-}
-
-/* Capa 2: Sobre Cerrado (Superpuesto) */
-.envelope-img-closed {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center top;
-  z-index: 2;
-  transition: opacity 0.7s ease-in-out, transform 0.8s ease-in-out;
-}
-
-/* Texto de indicación */
-.tap-instruction {
-  position: absolute;
-  bottom: 30px;
-  left: 0;
-  right: 0;
-  text-align: center;
-  color: #ffffff;
-  font-size: 11px;
-  letter-spacing: 0.25em;
-  text-transform: uppercase;
-  z-index: 3;
-  text-shadow: 0 2px 6px rgba(0,0,0,0.6);
-  animation: pulse 2s infinite;
-  pointer-events: none;
-}
-
-@keyframes pulse {
-  0%, 100% { opacity: 0.9; }
-  50% { opacity: 0.35; }
-}
-
-/* ANIMACIÓN AL TOCAR */
-.envelope-screen.opening .envelope-img-closed {
-  opacity: 0;
-  transform: scale(1.03);
-}
-
-.envelope-screen.opening .tap-instruction {
-  opacity: 0;
-  transition: opacity 0.3s ease;
-}
-
-.envelope-screen.opened {
-  opacity: 0;
-  visibility: hidden;
-  pointer-events: none;
-}
-
-/* ==========================================
-   TARJETA INTERNA CON DETALLES DE LA BODA
-   ========================================== */
-.content{
-  height:100svh;
-  padding: 14px 20px 10px;
-  text-align:center;
-  position:relative;
-  background:#ffffff var(--bg-image) center/cover no-repeat;
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  justify-content:space-evenly;
-}
-
-.content::before{
-  content:"";
-  position:absolute;
-  inset:0;
-  background:rgba(255, 255, 255, 0.82);
-  z-index:1;
-}
-
-.content > *{
-  position:relative;
-  z-index:2;
-  width:100%;
-}
-
-.block-names{ display:flex; flex-direction:column; align-items:center; }
-.names{ font-family:"Cormorant Garamond",serif; color:var(--gold); font-size: clamp(38px, 9.6vw, 46px); line-height:.82; letter-spacing:.08em; font-weight:500; }
-.and{ font-family:"Bodoni Moda", serif; font-size: clamp(21px, 5.4vw, 26px); font-style:italic; font-weight:300; color:var(--gold); margin:1px 0; display:block; line-height:1; }
-
-.block-intro{ display:flex; flex-direction:column; align-items:center; max-width: 360px; margin: 0 auto; }
-.intro-title{ font-family:"Cormorant Garamond",serif; font-size: clamp(15px, 4.0vw, 17.5px); color:var(--gold); margin-bottom: 4px; letter-spacing:.06em; font-weight:600; text-transform:uppercase; }
-.message-text{ font-size: clamp(13.5px, 3.5vw, 15px); line-height:1.4; color:var(--ink); font-weight:500; margin:0; padding:0 2px; }
-.line{ width:44px; height:1px; background:var(--gold); margin: 0 auto; opacity:.7; }
-
-.countdown-section{ margin:0; }
-.countdown-title{ color:var(--gold); font-family:"Cormorant Garamond",serif; font-size: clamp(16px, 4.2vw, 18px); letter-spacing:.15em; text-transform:uppercase; margin-bottom: 4px; font-weight: 600; }
-.countdown{ display:flex; justify-content:center; gap: 20px; }
-.count-item{ display:flex; flex-direction:column; align-items:center; }
-.count-number{ font-family:"Cormorant Garamond",serif; font-size: clamp(24px, 6.2vw, 28px); color:var(--ink); font-weight:600; line-height:1; }
-.count-label{ font-size: 10.5px; color:var(--gold); text-transform:uppercase; letter-spacing:.1em; margin-top: 3px; font-weight: 500; }
-
-.itinerary-section{ margin:0; width: 100%; max-width: 300px; }
-.itinerary-title{ color:var(--gold); font-family:"Cormorant Garamond",serif; font-size: clamp(17px, 4.5vw, 19px); letter-spacing:.15em; text-transform:uppercase; margin-bottom: 4px; font-weight: 600; }
-.timeline{ display:flex; flex-direction:column; gap: 2px; }
-.timeline-item{ display:flex; justify-content:space-between; align-items:center; padding: 3.5px 4px; border-bottom:1px solid rgba(179, 145, 85, 0.25); font-size: clamp(13px, 3.4vw, 14.5px); }
-.timeline-item:last-child{ border-bottom:none; }
-.timeline-time{ font-weight:600; color:var(--gold); letter-spacing:.05em; }
-.timeline-event{ color:var(--ink); font-weight:500; }
-
-.place-info{ margin-top: 0; }
-.btn-maps{ display:inline-flex; align-items:center; gap:8px; padding: 9px 24px; border:1px solid var(--gold); border-radius:20px; color:var(--gold); text-decoration:none; font-size: 11.5px; font-weight:600; letter-spacing:.12em; text-transform:uppercase; transition:all .25s ease; background: rgba(255,255,255,0.88); }
-.btn-maps svg{ width:14px; height:14px; stroke:currentColor; fill:none; }
-
-@media(min-width:481px){
-  .page{padding:20px 10px}
-  .invitation{border-radius:4px; height: auto; min-height: 680px; max-height: 90vh;}
-  .content{height: auto; min-height: 680px; max-height: 90vh;}
-  .envelope-screen{height: 100%;}
-}
+  .envelope-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+    display: block;
+  }
 </style>
 </head>
 <body>
 
-<main class="page">
-  <section class="invitation">
-
-    <!-- PANTALLA DEL SOBRE -->
-    <div class="envelope-screen" id="envelopeScreen">
-      <!-- Capa 1: Fondo sobre abierto -->
-      <img src="sobre_abierto.jpg" alt="Sobre Abierto" class="envelope-bg-open">
-      
-      <!-- Capa 2: Sobre cerrado -->
-      <img src="sobre_cerrado.jpg" alt="Sobre Cerrado" class="envelope-img-closed">
-
-      <div class="tap-instruction">Toca para abrir</div>
-    </div>
-
-    <!-- TARJETA PRINCIPAL CON LA INVITACIÓN -->
-    <section class="content">
-
-      <div class="block-names">
-        <div class="names">ANA</div>
-        <span class="and">&</span>
-        <div class="names">FRANCIS</div>
-      </div>
-
-      <div class="block-intro">
-        <div class="intro-title">Como ya os adelantamos con gran ilusión, ¡Nos casamos!</div>
-        <p class="message-text">
-          El camino es más bonito cuando se camina en buena compañía. Por eso, os invitamos a celebrar nuestro enlace matrimonial. Vuestra presencia y cariño son el mejor regalo que podríamos recibir en este inicio de nuestra vida en común.
-        </p>
-      </div>
-
-      <div class="line"></div>
-
-      <div class="countdown-section">
-        <div class="countdown-title">31 / 10 / 2026</div>
-        <div class="countdown">
-          <div class="count-item"><span class="count-number" id="days">00</span><span class="count-label">Días</span></div>
-          <div class="count-item"><span class="count-number" id="hours">00</span><span class="count-label">Horas</span></div>
-          <div class="count-item"><span class="count-number" id="minutes">00</span><span class="count-label">Min</span></div>
-          <div class="count-item"><span class="count-number" id="seconds">00</span><span class="count-label">Seg</span></div>
-        </div>
-      </div>
-
-      <div class="itinerary-section">
-        <div class="itinerary-title">Itinerario</div>
-        <div class="timeline">
-          <div class="timeline-item"><span class="timeline-time">13:00 h</span><span class="timeline-event">Llegada</span></div>
-          <div class="timeline-item"><span class="timeline-time">13:30 h</span><span class="timeline-event">Ceremonia</span></div>
-          <div class="timeline-item"><span class="timeline-time">14:00 h</span><span class="timeline-event">Cocktail</span></div>
-          <div class="timeline-item"><span class="timeline-time">15:00 h</span><span class="timeline-event">Comida</span></div>
-          <div class="timeline-item"><span class="timeline-time">16:30 h</span><span class="timeline-event">¡Que empiece la Fiesta!</span></div>
-        </div>
-      </div>
-
-      <div class="place-info">
-        <a href="https://maps.google.com/?q=Club+de+Tenis+y+Padel+Lew+Hoad+Mijas" target="_blank" rel="noopener noreferrer" class="btn-maps">
-          <svg viewBox="0 0 24 24"><path d="M12 21s-6-5.3-6-10a6 6 0 1 1 12 0c0 4.7-6 10-6 10z" stroke-width="1.5"/><circle cx="12" cy="11" r="2" stroke-width="1.5"/></svg>
-          Ver en Maps
-        </a>
-      </div>
-
-    </section>
-  </section>
-</main>
-
-<script>
-const screen = document.getElementById('envelopeScreen');
-let opened = false;
-
-function openInvitation(){
-  if(opened) return;
-  opened = true;
-  screen.classList.add('opening');
-  
-  setTimeout(() => {
-    screen.classList.add('opened');
-  }, 1100); 
-}
-
-screen.addEventListener('click', openInvitation);
-
-const weddingDate = new Date(2026, 9, 31, 13, 0, 0).getTime();
-
-function updateCountdown() {
-  const now = new Date().getTime();
-  const distance = weddingDate - now;
-
-  if (distance <= 0) {
-    document.getElementById("days").innerText = "00";
-    document.getElementById("hours").innerText = "00";
-    document.getElementById("minutes").innerText = "00";
-    document.getElementById("seconds").innerText = "00";
-    return;
-  }
-
-  const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-  const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-  const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-  const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-  document.getElementById("days").innerText = days < 10 ? '0' + days : days;
-  document.getElementById("hours").innerText = hours < 10 ? '0' + hours : hours;
-  document.getElementById("minutes").innerText = minutes < 10 ? '0' + minutes : minutes;
-  document.getElementById("seconds").innerText = seconds < 10 ? '0' + seconds : seconds;
-}
-
-setInterval(updateCountdown, 1000);
-updateCountdown();
-</script>
+  <div class="envelope-container">
+    <img src="sobre_cerrado.jpg" alt="Sobre Cerrado" class="envelope-img">
+  </div>
 
 </body>
 </html>
