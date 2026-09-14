@@ -81,7 +81,7 @@ html, body {
 
 .tap-instruction-container {
   position: absolute;
-  bottom: 58%; /* Aún más arriba */
+  bottom: 58%; 
   left: 0;
   right: 0;
   display: flex;
@@ -89,7 +89,8 @@ html, body {
   z-index: 10;
   pointer-events: none;
   animation: pulse 2.2s infinite ease-in-out;
-  transition: opacity 0.2s ease;
+  /* Transición rápida para que desaparezca al instante */
+  transition: opacity 0.1s ease;
 }
 
 .curved-text-svg {
@@ -117,8 +118,9 @@ html, body {
   transform: translateY(-12%);
 }
 
+/* Oculta la frase tan pronto se añade la clase 'opening' */
 .envelope-screen.opening .tap-instruction-container {
-  opacity: 0;
+  opacity: 0 !important;
 }
 
 .envelope-screen.opened {
@@ -160,7 +162,6 @@ html, body {
   text-align: center;
 }
 
-/* Capa combinada: Textura de papel + Fondo principal */
 .section-block::before {
   content: "";
   position: absolute;
@@ -187,9 +188,6 @@ html, body {
   width: 100%;
 }
 
-/* ==========================================
-   ANIMACIONES DE APARICIÓN (FADE-UP AL ESTAR ACTIVO)
-   ========================================== */
 .section-block .fade-item {
   opacity: 0;
   transform: translateY(25px);
@@ -206,9 +204,6 @@ html, body {
   transform: translateY(0);
 }
 
-/* ==========================================
-   SCROLL HINT
-   ========================================== */
 .scroll-hint {
   font-size: 10px;
   letter-spacing: 0.2em;
@@ -237,9 +232,6 @@ html, body {
   60% { transform: translateY(3px); }
 }
 
-/* ==========================================
-   BLOQUE 1: INTRO Y NOMBRES
-   ========================================== */
 .block-1 .center-content {
   flex: 1;
   display: flex;
@@ -302,9 +294,6 @@ html, body {
   max-width: 320px;
 }
 
-/* ==========================================
-   BLOQUE 2: CUENTA ATRÁS
-   ========================================== */
 .block-2 {
   justify-content: center;
   gap: 25px;
@@ -378,9 +367,6 @@ html, body {
   font-weight: 600;
 }
 
-/* ==========================================
-   BLOQUE 3: ITINERARIO CARRUSEL
-   ========================================== */
 .block-3 {
   justify-content: center;
   gap: 20px;
@@ -531,7 +517,7 @@ html, body {
       <img src="cuerpo_sobre.jpg" alt="Cuerpo" class="envelope-layer envelope-body">
       <img src="solapa_sello.png" alt="Solapa y Sello" class="envelope-layer envelope-flap">
       
-      <!-- TEXTO EN FORMA DE ARCO ENCIMA DEL SELLO (MÁS ARRIBA) -->
+      <!-- TEXTO EN FORMA DE ARCO ENCIMA DEL SELLO -->
       <div class="tap-instruction-container">
         <svg class="curved-text-svg" viewBox="0 0 220 50">
           <path id="arcPath" d="M 20,40 Q 110,0 200,40" fill="transparent" />
@@ -681,6 +667,7 @@ function openInvitation(){
   if(opened) return;
   opened = true;
   
+  // Añade la clase 'opening' inmediatamente al tocar, lo que desvanece la frase al instante
   screen.classList.add('opening');
   
   setTimeout(() => {
