@@ -191,7 +191,7 @@ html, body {
 }
 
 /* ==========================================
-   BLOQUE 1: INTRO Y NOMBRES (TAMAÑOS AMPLIADOS)
+   BLOQUE 1: INTRO Y NOMBRES
    ========================================== */
 .block-1 .center-content {
   flex: 1;
@@ -221,7 +221,7 @@ html, body {
 
 .name-main {
   font-family: "Cormorant Garamond", serif;
-  font-size: clamp(42px, 11.5vw, 54px); /* Aumentado */
+  font-size: clamp(42px, 11.5vw, 54px);
   color: var(--gold);
   letter-spacing: 0.08em;
   font-weight: 500;
@@ -229,7 +229,7 @@ html, body {
 
 .ampersand {
   font-family: "Bodoni Moda", serif;
-  font-size: clamp(24px, 6vw, 30px); /* Aumentado */
+  font-size: clamp(24px, 6vw, 30px);
   font-style: italic;
   color: var(--gold);
   margin: 6px 0;
@@ -237,7 +237,7 @@ html, body {
 
 .intro-title-block {
   font-family: "Cormorant Garamond", serif;
-  font-size: clamp(15px, 4.2vw, 18px); /* Aumentado */
+  font-size: clamp(15px, 4.2vw, 18px);
   color: var(--gold);
   letter-spacing: 0.04em;
   font-weight: 600;
@@ -247,7 +247,7 @@ html, body {
 }
 
 .main-message {
-  font-size: clamp(13.5px, 3.6vw, 15.5px); /* Aumentado */
+  font-size: clamp(13.5px, 3.6vw, 15.5px);
   line-height: 1.55;
   color: var(--ink);
   font-weight: 500;
@@ -259,14 +259,14 @@ html, body {
    ========================================== */
 .block-2 {
   justify-content: center;
-  gap: 35px;
+  gap: 25px;
 }
 
 .block-header {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 8px;
+  gap: 6px;
 }
 
 .section-tag {
@@ -283,6 +283,16 @@ html, body {
   color: var(--ink);
   font-weight: 600;
   line-height: 1.1;
+}
+
+/* Estilo para la fecha elegante debajo del título */
+.wedding-date-text {
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(16px, 4.5vw, 19px);
+  color: var(--gold);
+  font-style: italic;
+  letter-spacing: 0.05em;
+  margin-top: 4px;
 }
 
 .countdown-box {
@@ -441,6 +451,7 @@ html, body {
         <div class="block-header">
           <span class="section-tag">Cuenta atrás</span>
           <h2 class="section-title">El Gran Día</h2>
+          <div class="wedding-date-text">Sábado, 31 de Octubre de 2026</div>
         </div>
 
         <div class="countdown-box">
