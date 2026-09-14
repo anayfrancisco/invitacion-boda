@@ -10,7 +10,7 @@
 :root{
   --gold:#b39155;
   --ink:#4a524d;
-  --bg-image: url('https://raw.githubusercontent.com/anayfrancisco/anayfrancisco/main/9469116_4152950.jpg'); 
+  --bg-image: url('9469116_4152950.jpg'); 
 }
 
 *{box-sizing:border-box}
@@ -53,7 +53,7 @@ body{
   transition: opacity 0.8s ease 0.4s, visibility 0.8s ease 0.4s;
 }
 
-/* Imagen 1: Sobre Abierto (Fondo) */
+/* Capa 1: Sobre Abierto (Fondo) */
 .envelope-bg-open {
   position: absolute;
   inset: 0;
@@ -64,7 +64,7 @@ body{
   z-index: 1;
 }
 
-/* Imagen 2: Sobre Cerrado (Superpuesto) */
+/* Capa 2: Sobre Cerrado (Superpuesto) */
 .envelope-img-closed {
   position: absolute;
   inset: 0;
@@ -76,7 +76,7 @@ body{
   transition: opacity 0.7s ease-in-out, transform 0.8s ease-in-out;
 }
 
-/* Texto de instrucción */
+/* Texto de indicación */
 .tap-instruction {
   position: absolute;
   bottom: 30px;
@@ -185,18 +185,18 @@ body{
 <main class="page">
   <section class="invitation">
 
-    <!-- SOBRE DE BIENVENIDA -->
+    <!-- PANTALLA DEL SOBRE -->
     <div class="envelope-screen" id="envelopeScreen">
       <!-- Capa 1: Fondo sobre abierto -->
-      <img src="https://raw.githubusercontent.com/anayfrancisco/anayfrancisco/main/sobre_abierto.jpg" alt="Sobre Abierto" class="envelope-bg-open">
+      <img src="sobre_abierto.jpg" alt="Sobre Abierto" class="envelope-bg-open">
       
-      <!-- Capa 2: Sobre cerrado (frontal) -->
-      <img src="https://raw.githubusercontent.com/anayfrancisco/anayfrancisco/main/sobre_cerrado.jpg" alt="Sobre Cerrado" class="envelope-img-closed">
+      <!-- Capa 2: Sobre cerrado -->
+      <img src="sobre_cerrado.jpg" alt="Sobre Cerrado" class="envelope-img-closed">
 
       <div class="tap-instruction">Toca para abrir</div>
     </div>
 
-    <!-- TARJETA INTERNA -->
+    <!-- TARJETA PRINCIPAL CON LA INVITACIÓN -->
     <section class="content">
 
       <div class="block-names">
