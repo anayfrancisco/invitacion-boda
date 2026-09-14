@@ -4,7 +4,6 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <title>Ana & Francis — 31 / 10 / 2026</title>
-<meta name="description" content="Invitación de boda de Ana & Francis">
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,wght@1,300;1,400&family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap');
 
@@ -42,7 +41,7 @@ body{
 }
 
 /* ==========================================
-   PANTALLA DEL SOBRE CON IMÁGENES REALES
+   PANTALLA DEL SOBRE (CAPAS CON IMÁGENES REALES)
    ========================================== */
 .envelope-screen{
   position:absolute;
@@ -50,24 +49,30 @@ body{
   z-index:100;
   cursor:pointer;
   overflow:hidden;
+  background-color: #9db1a7; /* Color de respaldo si no carga la imagen */
   transition: opacity 0.8s ease 0.4s, visibility 0.8s ease 0.4s;
 }
 
-/* Fondo con el sobre ABIERTO (capa de abajo) */
-.envelope-layer-open {
+.envelope-img {
   position: absolute;
-  inset: 0;
-  background: url('sobre_abierto.jpg') center center / cover no-repeat;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Asegura que la imagen cubra toda la pantalla sin deformarse */
+  object-position: center top; /* Alinea la imagen desde arriba para que NO corte la solapa */
+  display: block;
+}
+
+/* Capa 1: Sobre Abierto (Fondo) */
+.envelope-img-open {
   z-index: 1;
 }
 
-/* Fondo con el sobre CERRADO (capa de arriba) */
-.envelope-layer-closed {
-  position: absolute;
-  inset: 0;
-  background: url('sobre_cerrado.jpg') center center / cover no-repeat;
+/* Capa 2: Sobre Cerrado (Superpuesta) */
+.envelope-img-closed {
   z-index: 2;
-  transition: opacity 0.6s ease-in-out, transform 0.8s ease-in-out;
+  transition: opacity 0.7s ease-in-out, transform 0.8s ease-in-out;
 }
 
 /* Texto indicativo */
@@ -82,8 +87,9 @@ body{
   letter-spacing: 0.25em;
   text-transform: uppercase;
   z-index: 3;
-  text-shadow: 0 2px 6px rgba(0,0,0,0.5);
+  text-shadow: 0 2px 6px rgba(0,0,0,0.6);
   animation: pulse 2s infinite;
+  pointer-events: none;
 }
 
 @keyframes pulse {
@@ -91,10 +97,10 @@ body{
   50% { opacity: 0.35; }
 }
 
-/* ANIMACIÓN DE APERTURA AL TOCAR */
-.envelope-screen.opening .envelope-layer-closed {
+/* ANIMACIÓN DE APERTURA */
+.envelope-screen.opening .envelope-img-closed {
   opacity: 0;
-  transform: scale(1.03); /* Efecto suave de apertura */
+  transform: scale(1.04);
 }
 
 .envelope-screen.opening .tap-instruction {
@@ -109,18 +115,14 @@ body{
 }
 
 /* ==========================================
-   TARJETA INTERNA CON DETALLES DE LA BODA
+   CONTENIDO PRINCIPAL
    ========================================== */
 .content{
   height:100svh;
   padding: 14px 20px 10px;
   text-align:center;
   position:relative;
-  background:#ffffff;
-  background-image: var(--bg-image);
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
+  background:#ffffff var(--bg-image) center/cover no-repeat;
   display:flex;
   flex-direction:column;
   align-items:center;
@@ -141,18 +143,15 @@ body{
   width:100%;
 }
 
-/* BLOQUE 1: NOMBRES */
 .block-names{ display:flex; flex-direction:column; align-items:center; }
 .names{ font-family:"Cormorant Garamond",serif; color:var(--gold); font-size: clamp(38px, 9.6vw, 46px); line-height:.82; letter-spacing:.08em; font-weight:500; }
 .and{ font-family:"Bodoni Moda", serif; font-size: clamp(21px, 5.4vw, 26px); font-style:italic; font-weight:300; color:var(--gold); margin:1px 0; display:block; line-height:1; }
 
-/* BLOQUE 2: TÍTULO Y TEXTO */
 .block-intro{ display:flex; flex-direction:column; align-items:center; max-width: 360px; margin: 0 auto; }
 .intro-title{ font-family:"Cormorant Garamond",serif; font-size: clamp(15px, 4.0vw, 17.5px); color:var(--gold); margin-bottom: 4px; letter-spacing:.06em; font-weight:600; text-transform:uppercase; }
 .message-text{ font-size: clamp(13.5px, 3.5vw, 15px); line-height:1.4; color:var(--ink); font-weight:500; margin:0; padding:0 2px; }
 .line{ width:44px; height:1px; background:var(--gold); margin: 0 auto; opacity:.7; }
 
-/* BLOQUE 3: CUENTA ATRÁS */
 .countdown-section{ margin:0; }
 .countdown-title{ color:var(--gold); font-family:"Cormorant Garamond",serif; font-size: clamp(16px, 4.2vw, 18px); letter-spacing:.15em; text-transform:uppercase; margin-bottom: 4px; font-weight: 600; }
 .countdown{ display:flex; justify-content:center; gap: 20px; }
@@ -160,7 +159,6 @@ body{
 .count-number{ font-family:"Cormorant Garamond",serif; font-size: clamp(24px, 6.2vw, 28px); color:var(--ink); font-weight:600; line-height:1; }
 .count-label{ font-size: 10.5px; color:var(--gold); text-transform:uppercase; letter-spacing:.1em; margin-top: 3px; font-weight: 500; }
 
-/* BLOQUE 4: ITINERARIO */
 .itinerary-section{ margin:0; width: 100%; max-width: 300px; }
 .itinerary-title{ color:var(--gold); font-family:"Cormorant Garamond",serif; font-size: clamp(17px, 4.5vw, 19px); letter-spacing:.15em; text-transform:uppercase; margin-bottom: 4px; font-weight: 600; }
 .timeline{ display:flex; flex-direction:column; gap: 2px; }
@@ -169,7 +167,6 @@ body{
 .timeline-time{ font-weight:600; color:var(--gold); letter-spacing:.05em; }
 .timeline-event{ color:var(--ink); font-weight:500; }
 
-/* BLOQUE 5: BOTÓN MAPS */
 .place-info{ margin-top: 0; }
 .btn-maps{ display:inline-flex; align-items:center; gap:8px; padding: 9px 24px; border:1px solid var(--gold); border-radius:20px; color:var(--gold); text-decoration:none; font-size: 11.5px; font-weight:600; letter-spacing:.12em; text-transform:uppercase; transition:all .25s ease; background: rgba(255,255,255,0.88); }
 .btn-maps svg{ width:14px; height:14px; stroke:currentColor; fill:none; }
@@ -187,18 +184,18 @@ body{
 <main class="page">
   <section class="invitation">
 
-    <!-- PANTALLA DEL SOBRE -->
-    <div class="envelope-screen" id="envelopeScreen" aria-label="Tocar para abrir la invitación">
-      <!-- Imagen del sobre abierto (fondo) -->
-      <div class="envelope-layer-open"></div>
+    <!-- SOBRE DE BIENVENIDA -->
+    <div class="envelope-screen" id="envelopeScreen">
+      <!-- Imagen fondo: sobre abierto -->
+      <img src="sobre_abierto.jpg" alt="Sobre Abierto" class="envelope-img envelope-img-open">
       
-      <!-- Imagen del sobre cerrado (capa frontal que se desvanece) -->
-      <div class="envelope-layer-closed"></div>
+      <!-- Imagen frontal: sobre cerrado -->
+      <img src="sobre_cerrado.jpg" alt="Sobre Cerrado" class="envelope-img envelope-img-closed">
 
       <div class="tap-instruction">Toca para abrir</div>
     </div>
 
-    <!-- TARJETA PRINCIPAL CON LA INVITACIÓN -->
+    <!-- TARJETA INTERNA -->
     <section class="content">
 
       <div class="block-names">
@@ -219,57 +216,27 @@ body{
       <div class="countdown-section">
         <div class="countdown-title">31 / 10 / 2026</div>
         <div class="countdown">
-          <div class="count-item">
-            <span class="count-number" id="days">00</span>
-            <span class="count-label">Días</span>
-          </div>
-          <div class="count-item">
-            <span class="count-number" id="hours">00</span>
-            <span class="count-label">Horas</span>
-          </div>
-          <div class="count-item">
-            <span class="count-number" id="minutes">00</span>
-            <span class="count-label">Min</span>
-          </div>
-          <div class="count-item">
-            <span class="count-number" id="seconds">00</span>
-            <span class="count-label">Seg</span>
-          </div>
+          <div class="count-item"><span class="count-number" id="days">00</span><span class="count-label">Días</span></div>
+          <div class="count-item"><span class="count-number" id="hours">00</span><span class="count-label">Horas</span></div>
+          <div class="count-item"><span class="count-number" id="minutes">00</span><span class="count-label">Min</span></div>
+          <div class="count-item"><span class="count-number" id="seconds">00</span><span class="count-label">Seg</span></div>
         </div>
       </div>
 
       <div class="itinerary-section">
         <div class="itinerary-title">Itinerario</div>
         <div class="timeline">
-          <div class="timeline-item">
-            <span class="timeline-time">13:00 h</span>
-            <span class="timeline-event">Llegada</span>
-          </div>
-          <div class="timeline-item">
-            <span class="timeline-time">13:30 h</span>
-            <span class="timeline-event">Ceremonia</span>
-          </div>
-          <div class="timeline-item">
-            <span class="timeline-time">14:00 h</span>
-            <span class="timeline-event">Cocktail</span>
-          </div>
-          <div class="timeline-item">
-            <span class="timeline-time">15:00 h</span>
-            <span class="timeline-event">Comida</span>
-          </div>
-          <div class="timeline-item">
-            <span class="timeline-time">16:30 h</span>
-            <span class="timeline-event">¡Que empiece la Fiesta!</span>
-          </div>
+          <div class="timeline-item"><span class="timeline-time">13:00 h</span><span class="timeline-event">Llegada</span></div>
+          <div class="timeline-item"><span class="timeline-time">13:30 h</span><span class="timeline-event">Ceremonia</span></div>
+          <div class="timeline-item"><span class="timeline-time">14:00 h</span><span class="timeline-event">Cocktail</span></div>
+          <div class="timeline-item"><span class="timeline-time">15:00 h</span><span class="timeline-event">Comida</span></div>
+          <div class="timeline-item"><span class="timeline-time">16:30 h</span><span class="timeline-event">¡Que empiece la Fiesta!</span></div>
         </div>
       </div>
 
       <div class="place-info">
         <a href="https://maps.google.com/?q=Club+de+Tenis+y+Padel+Lew+Hoad+Mijas" target="_blank" rel="noopener noreferrer" class="btn-maps">
-          <svg viewBox="0 0 24 24">
-            <path d="M12 21s-6-5.3-6-10a6 6 0 1 1 12 0c0 4.7-6 10-6 10z" stroke-width="1.5"/>
-            <circle cx="12" cy="11" r="2" stroke-width="1.5"/>
-          </svg>
+          <svg viewBox="0 0 24 24"><path d="M12 21s-6-5.3-6-10a6 6 0 1 1 12 0c0 4.7-6 10-6 10z" stroke-width="1.5"/><circle cx="12" cy="11" r="2" stroke-width="1.5"/></svg>
           Ver en Maps
         </a>
       </div>
@@ -279,7 +246,6 @@ body{
 </main>
 
 <script>
-// Animación del Sobre con imágenes
 const screen = document.getElementById('envelopeScreen');
 let opened = false;
 
@@ -287,16 +253,11 @@ function openInvitation(){
   if(opened) return;
   opened = true;
   screen.classList.add('opening');
-  
-  // Tiempo para que termine el fundido entre imágenes antes de ocultar la capa
-  setTimeout(() => {
-    screen.classList.add('opened');
-  }, 1100); 
+  setTimeout(() => screen.classList.add('opened'), 1100); 
 }
 
 screen.addEventListener('click', openInvitation);
 
-// Cuenta atrás al 31/10/2026
 const weddingDate = new Date(2026, 9, 31, 13, 0, 0).getTime();
 
 function updateCountdown() {
