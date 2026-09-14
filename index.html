@@ -10,8 +10,6 @@
 
 :root{
   --gold:#b39155;
-  --gold-hover:#96763d;
-  --gold-light: rgba(179, 145, 85, 0.15);
   --ink:#4a524d;
   --bg-image: url('9469116_4152950.jpg'); 
 }
@@ -43,144 +41,76 @@ body{
   flex-direction:column;
 }
 
-/* PANTALLA DEL SOBRE */
+/* ==========================================
+   PANTALLA DEL SOBRE CON IMÁGENES REALES
+   ========================================== */
 .envelope-screen{
   position:absolute;
   inset:0;
-  z-index:10;
-  background:#f6f8f7;
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  justify-content:center;
-  gap: 32px;
-  padding: 30px 20px;
-  transition:opacity .8s ease, visibility .8s ease;
-}
-
-.envelope-screen.opened{
-  opacity:0;
-  visibility:hidden;
-  pointer-events:none;
-}
-
-.envelope-title{
-  text-align:center;
-  color:var(--gold);
-  letter-spacing:.25em;
-  font-size: 13px;
-  font-weight:500;
-  text-transform:uppercase;
-  padding:0 10px;
-}
-
-.envelope-wrap{
-  width:min(88%,320px);
-  aspect-ratio:1.45;
-  position:relative;
-  perspective:1000px;
-  touch-action:pan-y;
+  z-index:100;
   cursor:pointer;
+  overflow:hidden;
+  transition: opacity 0.8s ease 0.4s, visibility 0.8s ease 0.4s;
 }
 
-.envelope{
-  position:absolute;
-  inset:0;
-  background:#9db1a7;
-  border-radius:3px;
-  box-shadow:0 12px 30px rgba(45,60,54,.2);
-  overflow:visible;
+/* Fondo con el sobre ABIERTO (capa de abajo) */
+.envelope-layer-open {
+  position: absolute;
+  inset: 0;
+  background: url('sobre_abierto.jpg') center center / cover no-repeat;
+  z-index: 1;
 }
 
-.envelope:before,
-.envelope:after{
-  content:"";
-  position:absolute;
-  bottom:0;
-  width:0;height:0;
-  border-style:solid;
-  z-index:3;
+/* Fondo con el sobre CERRADO (capa de arriba) */
+.envelope-layer-closed {
+  position: absolute;
+  inset: 0;
+  background: url('sobre_cerrado.jpg') center center / cover no-repeat;
+  z-index: 2;
+  transition: opacity 0.6s ease-in-out, transform 0.8s ease-in-out;
 }
 
-.envelope:before{
-  left:0;
-  border-width:0 0 100% 50%;
-  border-color:transparent transparent #8fa399 transparent;
+/* Texto indicativo */
+.tap-instruction {
+  position: absolute;
+  bottom: 30px;
+  left: 0;
+  right: 0;
+  text-align: center;
+  color: #ffffff;
+  font-size: 11px;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  z-index: 3;
+  text-shadow: 0 2px 6px rgba(0,0,0,0.5);
+  animation: pulse 2s infinite;
 }
 
-.envelope:after{
-  right:0;
-  border-width:0 50% 100% 0;
-  border-color:transparent #879b91 transparent transparent;
+@keyframes pulse {
+  0%, 100% { opacity: 0.9; }
+  50% { opacity: 0.35; }
 }
 
-.flap{
-  position:absolute;
-  top:0;left:0;
-  width:100%;height:64%;
-  background:#a8bbb1;
-  clip-path:polygon(0 0,100% 0,50% 100%);
-  transform-origin:top center;
-  transition:transform 1s cubic-bezier(.2,.75,.2,1);
-  z-index:5;
-  filter:drop-shadow(0 3px 4px rgba(40,55,48,.12));
+/* ANIMACIÓN DE APERTURA AL TOCAR */
+.envelope-screen.opening .envelope-layer-closed {
+  opacity: 0;
+  transform: scale(1.03); /* Efecto suave de apertura */
 }
 
-.seal{
-  position:absolute;
-  z-index:6;
-  left:50%;top:50%;
-  transform:translate(-50%,-50%);
-  width: 62px;
-  height: 62px;
-  border-radius:50%;
-  background:radial-gradient(circle at 35% 30%, #d8c28a, #ab8d52);
-  box-shadow:0 4px 14px rgba(40,30,15,.3);
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  transition:transform .6s ease, opacity .35s ease;
+.envelope-screen.opening .tap-instruction {
+  opacity: 0;
+  transition: opacity 0.3s ease;
 }
 
-.seal span{
-  border:1px solid rgba(255,255,255,.6);
-  width: 46px;
-  height: 46px;
-  border-radius:50%;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  color:#ffffff;
-  font-family:"Cormorant Garamond", serif;
-  font-size: 18px;
-  font-weight:500;
-  letter-spacing:0.02em;
-  text-align:center;
-  line-height:1;
-  padding-top:1px;
-  white-space:nowrap;
+.envelope-screen.opened {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
 }
 
-.envelope-screen.opening .flap{transform:rotateX(180deg)}
-.envelope-screen.opening .seal{transform:translate(-50%,-50%) scale(.8);opacity:0}
-.envelope-screen.opening .envelope{animation:lift .9s ease forwards}
-
-@keyframes lift{
-  50%{transform:translateY(-15px) scale(1.01)}
-  100%{transform:translateY(-30px) scale(.98);opacity:0}
-}
-
-.instruction{
-  text-align:center;
-  color:var(--gold);
-  letter-spacing:.25em;
-  font-size: 13px;
-  font-weight:500;
-  text-transform:uppercase;
-  padding:0 10px;
-}
-
-/* TARJETA INTERNA */
+/* ==========================================
+   TARJETA INTERNA CON DETALLES DE LA BODA
+   ========================================== */
 .content{
   height:100svh;
   padding: 14px 20px 10px;
@@ -212,192 +142,37 @@ body{
 }
 
 /* BLOQUE 1: NOMBRES */
-.block-names{
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-}
-
-.names{
-  font-family:"Cormorant Garamond",serif;
-  color:var(--gold);
-  font-size: clamp(38px, 9.6vw, 46px);
-  line-height:.82;
-  letter-spacing:.08em;
-  font-weight:500;
-}
-
-.and{
-  font-family:"Bodoni Moda", serif;
-  font-size: clamp(21px, 5.4vw, 26px);
-  font-style:italic;
-  font-weight:300;
-  color:var(--gold);
-  margin:1px 0;
-  display:block;
-  line-height:1;
-}
+.block-names{ display:flex; flex-direction:column; align-items:center; }
+.names{ font-family:"Cormorant Garamond",serif; color:var(--gold); font-size: clamp(38px, 9.6vw, 46px); line-height:.82; letter-spacing:.08em; font-weight:500; }
+.and{ font-family:"Bodoni Moda", serif; font-size: clamp(21px, 5.4vw, 26px); font-style:italic; font-weight:300; color:var(--gold); margin:1px 0; display:block; line-height:1; }
 
 /* BLOQUE 2: TÍTULO Y TEXTO */
-.block-intro{
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  max-width: 360px;
-  margin: 0 auto;
-}
+.block-intro{ display:flex; flex-direction:column; align-items:center; max-width: 360px; margin: 0 auto; }
+.intro-title{ font-family:"Cormorant Garamond",serif; font-size: clamp(15px, 4.0vw, 17.5px); color:var(--gold); margin-bottom: 4px; letter-spacing:.06em; font-weight:600; text-transform:uppercase; }
+.message-text{ font-size: clamp(13.5px, 3.5vw, 15px); line-height:1.4; color:var(--ink); font-weight:500; margin:0; padding:0 2px; }
+.line{ width:44px; height:1px; background:var(--gold); margin: 0 auto; opacity:.7; }
 
-.intro-title{
-  font-family:"Cormorant Garamond",serif;
-  font-size: clamp(15px, 4.0vw, 17.5px);
-  color:var(--gold);
-  margin-bottom: 4px;
-  letter-spacing:.06em;
-  font-weight:600;
-  text-transform:uppercase;
-}
+/* BLOQUE 3: CUENTA ATRÁS */
+.countdown-section{ margin:0; }
+.countdown-title{ color:var(--gold); font-family:"Cormorant Garamond",serif; font-size: clamp(16px, 4.2vw, 18px); letter-spacing:.15em; text-transform:uppercase; margin-bottom: 4px; font-weight: 600; }
+.countdown{ display:flex; justify-content:center; gap: 20px; }
+.count-item{ display:flex; flex-direction:column; align-items:center; }
+.count-number{ font-family:"Cormorant Garamond",serif; font-size: clamp(24px, 6.2vw, 28px); color:var(--ink); font-weight:600; line-height:1; }
+.count-label{ font-size: 10.5px; color:var(--gold); text-transform:uppercase; letter-spacing:.1em; margin-top: 3px; font-weight: 500; }
 
-.message-text{
-  font-size: clamp(13.5px, 3.5vw, 15px);
-  line-height:1.4;
-  color:var(--ink);
-  font-weight:500;
-  margin:0;
-  padding:0 2px;
-}
-
-.line{
-  width:44px;
-  height:1px;
-  background:var(--gold);
-  margin: 0 auto;
-  opacity:.7;
-}
-
-/* BLOQUE 3: CUENTA ATRÁS (Escalado) */
-.countdown-section{
-  margin:0;
-}
-
-.countdown-title{
-  color:var(--gold);
-  font-family:"Cormorant Garamond",serif;
-  font-size: clamp(16px, 4.2vw, 18px);
-  letter-spacing:.15em;
-  text-transform:uppercase;
-  margin-bottom: 4px;
-  font-weight: 600;
-}
-
-.countdown{
-  display:flex;
-  justify-content:center;
-  gap: 20px;
-}
-
-.count-item{
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-}
-
-.count-number{
-  font-family:"Cormorant Garamond",serif;
-  font-size: clamp(24px, 6.2vw, 28px);
-  color:var(--ink);
-  font-weight:600;
-  line-height:1;
-}
-
-.count-label{
-  font-size: 10.5px;
-  color:var(--gold);
-  text-transform:uppercase;
-  letter-spacing:.1em;
-  margin-top: 3px;
-  font-weight: 500;
-}
-
-/* BLOQUE 4: ITINERARIO (Escalado) */
-.itinerary-section{
-  margin:0;
-  width: 100%;
-  max-width: 300px;
-}
-
-.itinerary-title{
-  color:var(--gold);
-  font-family:"Cormorant Garamond",serif;
-  font-size: clamp(17px, 4.5vw, 19px);
-  letter-spacing:.15em;
-  text-transform:uppercase;
-  margin-bottom: 4px;
-  font-weight: 600;
-}
-
-.timeline{
-  display:flex;
-  flex-direction:column;
-  gap: 2px;
-}
-
-.timeline-item{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  padding: 3.5px 4px;
-  border-bottom:1px solid rgba(179, 145, 85, 0.25);
-  font-size: clamp(13px, 3.4vw, 14.5px);
-}
-
-.timeline-item:last-child{
-  border-bottom:none;
-}
-
-.timeline-time{
-  font-weight:600;
-  color:var(--gold);
-  letter-spacing:.05em;
-}
-
-.timeline-event{
-  color:var(--ink);
-  font-weight:500;
-}
+/* BLOQUE 4: ITINERARIO */
+.itinerary-section{ margin:0; width: 100%; max-width: 300px; }
+.itinerary-title{ color:var(--gold); font-family:"Cormorant Garamond",serif; font-size: clamp(17px, 4.5vw, 19px); letter-spacing:.15em; text-transform:uppercase; margin-bottom: 4px; font-weight: 600; }
+.timeline{ display:flex; flex-direction:column; gap: 2px; }
+.timeline-item{ display:flex; justify-content:space-between; align-items:center; padding: 3.5px 4px; border-bottom:1px solid rgba(179, 145, 85, 0.25); font-size: clamp(13px, 3.4vw, 14.5px); }
+.timeline-item:last-child{ border-bottom:none; }
+.timeline-time{ font-weight:600; color:var(--gold); letter-spacing:.05em; }
+.timeline-event{ color:var(--ink); font-weight:500; }
 
 /* BLOQUE 5: BOTÓN MAPS */
-.place-info{
-  margin-top: 0;
-}
-
-.btn-maps{
-  display:inline-flex;
-  align-items:center;
-  gap:8px;
-  padding: 9px 24px;
-  border:1px solid var(--gold);
-  border-radius:20px;
-  color:var(--gold);
-  text-decoration:none;
-  font-size: 11.5px;
-  font-weight:600;
-  letter-spacing:.12em;
-  text-transform:uppercase;
-  transition:all .25s ease;
-  background: rgba(255,255,255,0.88);
-}
-
-.btn-maps svg{
-  width:14px;
-  height:14px;
-  stroke:currentColor;
-  fill:none;
-}
-
-.btn-maps:active{
-  background:var(--gold);
-  color:#ffffff;
-}
+.place-info{ margin-top: 0; }
+.btn-maps{ display:inline-flex; align-items:center; gap:8px; padding: 9px 24px; border:1px solid var(--gold); border-radius:20px; color:var(--gold); text-decoration:none; font-size: 11.5px; font-weight:600; letter-spacing:.12em; text-transform:uppercase; transition:all .25s ease; background: rgba(255,255,255,0.88); }
+.btn-maps svg{ width:14px; height:14px; stroke:currentColor; fill:none; }
 
 @media(min-width:481px){
   .page{padding:20px 10px}
@@ -412,32 +187,26 @@ body{
 <main class="page">
   <section class="invitation">
 
-    <!-- SOBRE DE BIENVENIDA -->
-    <div class="envelope-screen" id="envelopeScreen">
+    <!-- PANTALLA DEL SOBRE -->
+    <div class="envelope-screen" id="envelopeScreen" aria-label="Tocar para abrir la invitación">
+      <!-- Imagen del sobre abierto (fondo) -->
+      <div class="envelope-layer-open"></div>
       
-      <div class="envelope-title">TE INVITAMOS A NUESTRA BODA</div>
+      <!-- Imagen del sobre cerrado (capa frontal que se desvanece) -->
+      <div class="envelope-layer-closed"></div>
 
-      <div class="envelope-wrap" id="envelopeWrap" aria-label="Tocar el sobre para abrir la invitación">
-        <div class="envelope">
-          <div class="flap"></div>
-          <div class="seal"><span>A & F</span></div>
-        </div>
-      </div>
-
-      <div class="instruction">TOCA EL SOBRE PARA ABRIRLO</div>
+      <div class="tap-instruction">Toca para abrir</div>
     </div>
 
-    <!-- TARJETA CON FONDO DE IMAGEN -->
+    <!-- TARJETA PRINCIPAL CON LA INVITACIÓN -->
     <section class="content">
 
-      <!-- BLOQUE 1: NOMBRES -->
       <div class="block-names">
         <div class="names">ANA</div>
         <span class="and">&</span>
         <div class="names">FRANCIS</div>
       </div>
 
-      <!-- BLOQUE 2: TÍTULO Y TEXTO -->
       <div class="block-intro">
         <div class="intro-title">Como ya os adelantamos con gran ilusión, ¡Nos casamos!</div>
         <p class="message-text">
@@ -447,7 +216,6 @@ body{
 
       <div class="line"></div>
 
-      <!-- BLOQUE 3: CUENTA ATRÁS -->
       <div class="countdown-section">
         <div class="countdown-title">31 / 10 / 2026</div>
         <div class="countdown">
@@ -470,7 +238,6 @@ body{
         </div>
       </div>
 
-      <!-- BLOQUE 4: ITINERARIO -->
       <div class="itinerary-section">
         <div class="itinerary-title">Itinerario</div>
         <div class="timeline">
@@ -497,7 +264,6 @@ body{
         </div>
       </div>
 
-      <!-- BLOQUE 5: LUGAR Y MAPA -->
       <div class="place-info">
         <a href="https://maps.google.com/?q=Club+de+Tenis+y+Padel+Lew+Hoad+Mijas" target="_blank" rel="noopener noreferrer" class="btn-maps">
           <svg viewBox="0 0 24 24">
@@ -513,21 +279,24 @@ body{
 </main>
 
 <script>
-// Animación del Sobre
+// Animación del Sobre con imágenes
 const screen = document.getElementById('envelopeScreen');
-const wrap = document.getElementById('envelopeWrap');
 let opened = false;
 
 function openInvitation(){
   if(opened) return;
   opened = true;
   screen.classList.add('opening');
-  setTimeout(() => screen.classList.add('opened'), 850); 
+  
+  // Tiempo para que termine el fundido entre imágenes antes de ocultar la capa
+  setTimeout(() => {
+    screen.classList.add('opened');
+  }, 1100); 
 }
 
-wrap.addEventListener('click', openInvitation);
+screen.addEventListener('click', openInvitation);
 
-// 31 de octubre de 2026 a las 13:00:00 (Hora local exacta)
+// Cuenta atrás al 31/10/2026
 const weddingDate = new Date(2026, 9, 31, 13, 0, 0).getTime();
 
 function updateCountdown() {
