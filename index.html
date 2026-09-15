@@ -312,35 +312,38 @@ html, body {
   font-weight: 600;
 }
 
-/* ESTILO DESTACADO PARA LA FECHA (Ajustado: 31 más arriba y color más oscuro/definido) */
+/* ESTILO DE FECHA ELEGANTE Y SEPARADA (Sin cruces) */
 .date-highlight-container {
   display: flex;
   flex-direction: column;
   align-items: center;
-  position: relative;
   margin: 6px 0;
 }
 
-.date-number-bg {
+.date-number-main {
   font-family: "Cormorant Garamond", serif;
-  font-size: clamp(72px, 20vw, 92px);
-  color: rgba(153, 122, 68, 0.42); /* Color más oscuro y con más presencia */
+  font-size: clamp(52px, 14vw, 68px);
+  color: var(--gold);
   font-weight: 700;
-  line-height: 0.75;
-  letter-spacing: -0.02em;
-  user-select: none;
-  transform: translateY(-8px); /* Desplazado sutilmente hacia arriba */
+  line-height: 1;
+  letter-spacing: 0.05em;
+}
+
+.date-divider {
+  width: 40px;
+  height: 1px;
+  background: var(--gold);
+  opacity: 0.4;
+  margin: 6px 0 8px 0;
 }
 
 .date-text-main {
   font-family: "Cinzel", serif;
-  font-size: clamp(16px, 4.5vw, 20px);
+  font-size: clamp(14px, 4vw, 17px);
   color: var(--ink);
-  letter-spacing: 0.28em;
+  letter-spacing: 0.3em;
   text-transform: uppercase;
   font-weight: 600;
-  margin-top: -10px; /* Ajustado para solaparse de forma elegante pero limpia */
-  z-index: 2;
 }
 
 .countdown-box {
@@ -526,7 +529,7 @@ html, body {
   border-radius: 3px;
 }
 
-/* ESTILOS PARA LA UBICACIÓN (Ajustado: mayor margen superior para separarlo del itinerario) */
+/* ESTILOS PARA LA UBICACIÓN */
 .location-container {
   display: flex;
   flex-direction: column;
@@ -636,10 +639,11 @@ html, body {
         <div class="block-header fade-item">
           <span class="section-tag">Cuenta atrás</span>
           
-          <!-- Fecha con protagonismo visual ajustado -->
+          <!-- Fecha estructurada sin solapamientos -->
           <div class="date-highlight-container">
-            <div class="date-number-bg">31</div>
-            <div class="date-text-main">OCTUBRE 2026</div>
+            <span class="date-number-main">31</span>
+            <div class="date-divider"></div>
+            <span class="date-text-main">OCTUBRE 2026</span>
           </div>
         </div>
 
@@ -729,7 +733,7 @@ html, body {
           </div>
         </div>
 
-        <!-- Nombre del sitio y botón de ubicación con mayor separación -->
+        <!-- Nombre del sitio y botón de ubicación -->
         <div class="location-container fade-item">
           <div class="location-name">Club de Tenis y Padel Lew Hoad</div>
           <a href="https://maps.google.com/?q=Club+de+Tenis+y+Padel+Lew+Hoad+Mijas" target="_blank" rel="noopener noreferrer" class="btn-location">
