@@ -312,38 +312,34 @@ html, body {
   font-weight: 600;
 }
 
-/* ESTILO DE FECHA ELEGANTE Y SEPARADA (Sin cruces) */
+/* ESTILO DE FECHA AJUSTADO: El 31 baja sutilmente para cruzarse solo por arriba */
 .date-highlight-container {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 6px 0;
+  position: relative;
+  margin: 2px 0;
 }
 
-.date-number-main {
+.date-number-bg {
   font-family: "Cormorant Garamond", serif;
-  font-size: clamp(52px, 14vw, 68px);
-  color: var(--gold);
+  font-size: clamp(68px, 19vw, 88px);
+  color: rgba(179, 145, 85, 0.25); /* Color original translúcido */
   font-weight: 700;
-  line-height: 1;
-  letter-spacing: 0.05em;
-}
-
-.date-divider {
-  width: 40px;
-  height: 1px;
-  background: var(--gold);
-  opacity: 0.4;
-  margin: 6px 0 8px 0;
+  line-height: 0.8;
+  letter-spacing: -0.02em;
+  user-select: none;
+  transform: translateY(10px); /* Bajado ligeramente para que el rabito del 3 se cruce con el texto inferior */
 }
 
 .date-text-main {
   font-family: "Cinzel", serif;
-  font-size: clamp(14px, 4vw, 17px);
+  font-size: clamp(16px, 4.5vw, 20px);
   color: var(--ink);
-  letter-spacing: 0.3em;
+  letter-spacing: 0.28em;
   text-transform: uppercase;
   font-weight: 600;
+  z-index: 2;
 }
 
 .countdown-box {
@@ -639,11 +635,10 @@ html, body {
         <div class="block-header fade-item">
           <span class="section-tag">Cuenta atrás</span>
           
-          <!-- Fecha estructurada sin solapamientos -->
+          <!-- Fecha con el 31 cruzándose sutilmente -->
           <div class="date-highlight-container">
-            <span class="date-number-main">31</span>
-            <div class="date-divider"></div>
-            <span class="date-text-main">OCTUBRE 2026</span>
+            <div class="date-number-bg">31</div>
+            <div class="date-text-main">OCTUBRE 2026</div>
           </div>
         </div>
 
