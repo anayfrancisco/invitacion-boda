@@ -312,7 +312,7 @@ html, body {
   font-weight: 600;
 }
 
-/* ESTILO DE FECHA AJUSTADO: El 31 baja sutilmente para cruzarse solo por arriba */
+/* ESTILO DE FECHA AJUSTADO: Un poquito más oscuro y un poquito más arriba */
 .date-highlight-container {
   display: flex;
   flex-direction: column;
@@ -324,12 +324,12 @@ html, body {
 .date-number-bg {
   font-family: "Cormorant Garamond", serif;
   font-size: clamp(68px, 19vw, 88px);
-  color: rgba(179, 145, 85, 0.25); /* Color original translúcido */
+  color: rgba(179, 145, 85, 0.38); /* Subido ligeramente de opacidad para que se vea un poco más oscuro */
   font-weight: 700;
-  line-height: 0.8;
+  line-height: 0.75;
   letter-spacing: -0.02em;
   user-select: none;
-  transform: translateY(10px); /* Bajado ligeramente para que el rabito del 3 se cruce con el texto inferior */
+  transform: translateY(2px); /* Subido un poco más hacia arriba */
 }
 
 .date-text-main {
@@ -635,7 +635,7 @@ html, body {
         <div class="block-header fade-item">
           <span class="section-tag">Cuenta atrás</span>
           
-          <!-- Fecha con el 31 cruzándose sutilmente -->
+          <!-- Fecha ajustada: 31 un poco más oscuro y más arriba -->
           <div class="date-highlight-container">
             <div class="date-number-bg">31</div>
             <div class="date-text-main">OCTUBRE 2026</div>
