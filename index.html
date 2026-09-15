@@ -235,7 +235,6 @@ html, body {
   60% { transform: translateY(3px); }
 }
 
-/* MODIFICACIÓN CLAVE AQUÍ: Centrado vertical restaurado y separación equilibrada */
 .block-1 {
   justify-content: center; 
 }
@@ -247,7 +246,7 @@ html, body {
   justify-content: center;
   align-items: center;
   gap: 14px;
-  margin: auto 0; /* Asegura que ocupe el centro exacto pero equilibrado */
+  margin: auto 0;
 }
 
 .names-wrapper {
@@ -290,19 +289,19 @@ html, body {
   color: var(--ink);
   font-weight: 500;
   max-width: 320px;
-  margin-bottom: 24px; /* Espacio moderado y elegante antes de la flecha de cuenta atrás */
+  margin-bottom: 24px;
 }
 
 .block-2 {
   justify-content: center;
-  gap: 25px;
+  gap: 20px;
 }
 
 .block-header {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 6px;
+  gap: 4px;
 }
 
 .section-tag {
@@ -313,21 +312,35 @@ html, body {
   font-weight: 600;
 }
 
-.section-title {
-  font-family: "Cormorant Garamond", serif;
-  font-size: clamp(30px, 8vw, 38px);
-  color: var(--ink);
-  font-weight: 600;
-  line-height: 1.1;
+/* ESTILO DESTACADO PARA LA FECHA (Ajustado: 31 más arriba y color más oscuro/definido) */
+.date-highlight-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  margin: 6px 0;
 }
 
-.wedding-date-text {
+.date-number-bg {
   font-family: "Cormorant Garamond", serif;
-  font-size: clamp(16px, 4.5vw, 19px);
-  color: var(--gold);
-  font-style: italic;
-  letter-spacing: 0.05em;
-  margin-top: 4px;
+  font-size: clamp(72px, 20vw, 92px);
+  color: rgba(153, 122, 68, 0.42); /* Color más oscuro y con más presencia */
+  font-weight: 700;
+  line-height: 0.75;
+  letter-spacing: -0.02em;
+  user-select: none;
+  transform: translateY(-8px); /* Desplazado sutilmente hacia arriba */
+}
+
+.date-text-main {
+  font-family: "Cinzel", serif;
+  font-size: clamp(16px, 4.5vw, 20px);
+  color: var(--ink);
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  font-weight: 600;
+  margin-top: -10px; /* Ajustado para solaparse de forma elegante pero limpia */
+  z-index: 2;
 }
 
 .countdown-box {
@@ -342,7 +355,7 @@ html, body {
   background: rgba(255, 255, 255, 0.85);
   border: 1px solid rgba(179, 145, 85, 0.3);
   border-radius: 8px;
-  padding: 16px 8px;
+  padding: 14px 8px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -351,7 +364,7 @@ html, body {
 
 .time-number {
   font-family: "Cormorant Garamond", serif;
-  font-size: clamp(28px, 8vw, 36px);
+  font-size: clamp(26px, 7.5vw, 34px);
   color: var(--gold);
   font-weight: 700;
   line-height: 1;
@@ -362,14 +375,14 @@ html, body {
   text-transform: uppercase;
   letter-spacing: 0.15em;
   color: var(--ink-light);
-  margin-top: 6px;
+  margin-top: 5px;
   font-weight: 600;
 }
 
 .block-3 {
   justify-content: center;
-  gap: 20px;
-  padding-bottom: calc(30px + env(safe-area-inset-bottom));
+  gap: 10px;
+  padding-bottom: calc(25px + env(safe-area-inset-bottom));
 }
 
 /* ==========================================
@@ -380,7 +393,7 @@ html, body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 10px;
+  gap: 8px;
 }
 
 .carousel-container-flex {
@@ -430,7 +443,7 @@ html, body {
   overflow-x: auto;
   scroll-snap-type: x mandatory;
   scroll-behavior: smooth;
-  padding: 10px 0;
+  padding: 8px 0;
   -webkit-overflow-scrolling: touch;
   scrollbar-width: none;
   cursor: grab;
@@ -451,7 +464,7 @@ html, body {
   background: rgba(255, 255, 255, 0.95);
   border: 1px solid rgba(179, 145, 85, 0.35);
   border-radius: 12px;
-  padding: 22px 18px;
+  padding: 18px 16px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -467,18 +480,18 @@ html, body {
 }
 
 .itinerary-img {
-  width: 110px;
-  height: 110px;
+  width: 95px;
+  height: 95px;
   object-fit: cover;
   border-radius: 8px;
-  margin-bottom: 12px;
+  margin-bottom: 10px;
   border: 1px solid rgba(179, 145, 85, 0.4);
   box-shadow: 0 4px 12px rgba(0,0,0,0.08);
 }
 
 .itinerary-time-badge {
   font-family: "Cormorant Garamond", serif;
-  font-size: 24px;
+  font-size: 22px;
   color: var(--gold);
   font-weight: 700;
   margin-bottom: 4px;
@@ -486,7 +499,7 @@ html, body {
 }
 
 .itinerary-title-card {
-  font-size: 13px;
+  font-size: 12.5px;
   text-transform: uppercase;
   letter-spacing: 0.2em;
   color: var(--ink);
@@ -511,6 +524,25 @@ html, body {
   background: var(--gold);
   width: 16px;
   border-radius: 3px;
+}
+
+/* ESTILOS PARA LA UBICACIÓN (Ajustado: mayor margen superior para separarlo del itinerario) */
+.location-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  margin-top: 18px; 
+}
+
+.location-name {
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(16px, 4.5vw, 19px);
+  color: var(--ink);
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-align: center;
 }
 
 .btn-location {
@@ -603,8 +635,12 @@ html, body {
       <section class="section-block block-2">
         <div class="block-header fade-item">
           <span class="section-tag">Cuenta atrás</span>
-          <h2 class="section-title">El Gran Día</h2>
-          <div class="wedding-date-text">Sábado, 31 de Octubre de 2026</div>
+          
+          <!-- Fecha con protagonismo visual ajustado -->
+          <div class="date-highlight-container">
+            <div class="date-number-bg">31</div>
+            <div class="date-text-main">OCTUBRE 2026</div>
+          </div>
         </div>
 
         <div class="countdown-box fade-item">
@@ -668,13 +704,13 @@ html, body {
 
               <div class="itinerary-card">
                 <img src="COMIDA.jpeg" alt="Comida" class="itinerary-img">
-                <div class="itinerary-time-badge">15:00 h</div>
+                <div class="itinerary-time-badge">15:30 h</div>
                 <div class="itinerary-title-card">Comida</div>
               </div>
 
               <div class="itinerary-card">
                 <img src="BAILE.jpeg" alt="Fiesta y Baile" class="itinerary-img">
-                <div class="itinerary-time-badge">16:30 h</div>
+                <div class="itinerary-time-badge">17:00 h</div>
                 <div class="itinerary-title-card">Fiesta y Baile</div>
               </div>
             </div>
@@ -693,10 +729,14 @@ html, body {
           </div>
         </div>
 
-        <a href="https://maps.google.com/?q=Club+de+Tenis+y+Padel+Lew+Hoad+Mijas" target="_blank" rel="noopener noreferrer" class="btn-location fade-item">
-          <svg viewBox="0 0 24 24"><path d="M12 21s-6-5.3-6-10a6 6 0 1 1 12 0c0 4.7-6 10-6 10z" stroke-width="2"/><circle cx="12" cy="11" r="2" stroke-width="2"/></svg>
-          Ver Ubicación
-        </a>
+        <!-- Nombre del sitio y botón de ubicación con mayor separación -->
+        <div class="location-container fade-item">
+          <div class="location-name">Club de Tenis y Padel Lew Hoad</div>
+          <a href="https://maps.google.com/?q=Club+de+Tenis+y+Padel+Lew+Hoad+Mijas" target="_blank" rel="noopener noreferrer" class="btn-location">
+            <svg viewBox="0 0 24 24"><path d="M12 21s-6-5.3-6-10a6 6 0 1 1 12 0c0 4.7-6 10-6 10z" stroke-width="2"/><circle cx="12" cy="11" r="2" stroke-width="2"/></svg>
+            Ver Ubicación
+          </a>
+        </div>
       </section>
 
     </div>
